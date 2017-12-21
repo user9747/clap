@@ -1,0 +1,13 @@
+.newpost{
+    border-bottom: 1px solid grey;  
+    padding:16px 0;
+}
+
+.post{
+    border-left-color: rgb(228, 98, 98);
+    }
+.info{
+    font-style: italic;
+    color:#aaa;
+
+}    

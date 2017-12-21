@@ -29,6 +29,9 @@ Route::post('postsignin',[
     'uses' => 'UserController@Signin',
     'as' =>'postsignin'
 ]);
+Route::get('dashboard',function(){
+    return view('dashboard');
+});
 
 
 Route::get('dashboard',[

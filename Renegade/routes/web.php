@@ -21,3 +21,7 @@ Route::get('signup', function () {
 Route::get('signin', function () {
     return view('signin');
 });
+Route::post('postsignup',[
+    'uses' => 'UserController@Signup',
+    'as' =>'postsignup'
+]);

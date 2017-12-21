@@ -25,3 +25,13 @@ Route::post('postsignup',[
     'uses' => 'UserController@Signup',
     'as' =>'postsignup'
 ]);
+Route::post('postsignin',[
+    'uses' => 'UserController@Signin',
+    'as' =>'postsignin'
+]);
+
+
+Route::get('dashboard',[
+    'uses' => 'UserController@getDashboard',
+    'as' =>'dashboard'
+]);

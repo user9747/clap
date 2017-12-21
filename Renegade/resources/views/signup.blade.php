@@ -13,11 +13,11 @@ Sign Up
                     <input class='form-control' type='text' name='email' id='email'>
                   </div>
                   <div class='form-group'>
-                    <label>First Name</label>
+                    <label>FirstName</label>
                     <input class='form-control' type='text' name='first_name' id='first_name'>
                   </div>
                   <div class='form-group'>
-                    <label>Last Name</label>
+                    <label>LastName</label>
                     <input class='form-control' type='text' name='last_name' id='last_name'>
                   </div>
                   <div class='form-group'>

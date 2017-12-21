@@ -25,9 +25,15 @@ Sign Up
                     <input class='form-control' type='password' name='password' id='password'>
                   </div>
                   <div class='form-group'>
-                    <label>Channel</label>
-                    <input class='form-control' type='text' name='channel' id='channel'>
-                  </div>
+                   <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Channels<span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">First</a></li>
+                        <li><a href="#">Second</a></li>
+                      </ul>
+                   </div> 
+                  </div> 
                     <button type='submit' class='btn btn-primary'>Submit</button>
                 </form>
 

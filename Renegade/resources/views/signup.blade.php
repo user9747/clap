@@ -25,6 +25,28 @@ Sign Up
                     <input class='form-control' type='password' name='password' id='password'>
                   </div>
                   <div class='form-group'>
+                  <select name="channel">
+                    <option value="channel1">Channel1</option>
+                    <option value="channel2">Channel2</option>
+                  </select>
+                  </div>
+                  <div class='form-group'>
+                  
+                  <select name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Albino">Albino</option>
+                  </select>
+                  </div>
+                  <div class='form-group'>
+                  <select name="interest">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                  </div>
+                  {{--  <div class='form-group'>
                    <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" name='channel' type="button" data-toggle="dropdown">
                     Channels<span class="caret"></span></button>
@@ -54,7 +76,7 @@ Sign Up
                         <li><a href="#">Interest 3</a></li>
                       </ul>
                    </div> 
-                  </div> 
+                  </div> //  --}}
                     <button type='submit' class='btn btn-primary'>Submit</button>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>

@@ -16,6 +16,15 @@ class UserController extends Controller{
 
 
     public function Signup(Request $request){
+        $this->validate($request,[
+          'email' => 'required|email|unique:users',
+          'first_name' => 'required|max:120',
+          'last_name' => 'required|max:120',
+          'password' => 'required|min:4',
+          'gender' => 'required',
+          'channel' => 'required',
+          'interest' => 'required'
+          ]);
         $email=$request['email'];
         $password=bcrypt($request['password']);
         $first_name=$request['first_name'];
@@ -40,6 +49,14 @@ class UserController extends Controller{
 
     public function SignIn(Request $request)
     {
+
+      $this->validate($request,[
+      	'email' => 'required',
+      	'password' => 'required',
+
+      	]);
+
+
 	    if (Auth::attempt(['email'=> $request['email'],'password'=> $request['password']])){
 
 		    return redirect()->route('dashboard');

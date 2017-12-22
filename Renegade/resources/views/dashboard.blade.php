@@ -16,7 +16,7 @@ Dashboard
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Renegade</a>
+      <a class="navbar-brand" href="{{route('dashboard')}}">Renegade</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,6 +24,7 @@ Dashboard
 
 
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{route('account')}}">account</a></li>
         <li><a href="{{route('logout')}}">logout</a></li>
 
       </ul>
@@ -51,7 +52,7 @@ Dashboard
                 <article data-postid='{{$post->id}}'>
                         <p>{{$post->body}}</p>
 
-              
+
                 <div class='info'>
                     Posted by user {{$post->user->first_name}} on {{$post->created_at}}
                 </div>
@@ -91,7 +92,7 @@ Dashboard
             </div>
           </div>
         </div>
-    <script> 
+    <script>
     var token='{{Session::token()}}'
     var url='{{route('edit')}}'
     </script>

@@ -47,8 +47,20 @@ class PostController extends Controller{
         $post->update();
         return response()->json(['new_body'=>$post->body],200);
         
-    }   
     }
+    public function postLike(Request $request){
+        $update=false;
+        $postid=$request['postId'];
+        $islike=$request['isLike']===true;
+        $post=Post::find($postid);
+        if(!$post){
+            return null;
+        }
+        $user=Auth::user();
+        $likes=$user->likes()->where('post_id',$postid)->first();
+    }    
+
+}
 
 
 

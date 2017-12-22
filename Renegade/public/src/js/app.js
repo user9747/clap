@@ -20,3 +20,17 @@ $('#modal-save').on('click',function(){
             $('#editmodal').modal('hide');
         });
 });
+$('.like').on('click',function(event){
+    event.preventDefault();
+    postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
+    var islike=event.target.previousElementSibling==null ? true : false;
+    $.ajax({
+        method:'POST',
+        url:urllike,
+        data:{isLike:islike,postId:postid,_token:token}
+    })
+    .done(function(){
+        console.log('Like');
+
+    });
+});

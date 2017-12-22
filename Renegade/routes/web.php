@@ -71,3 +71,7 @@
         'uses'=>'PostController@editPost',
         'as'=>'edit'
  ]);
+    Route::post('/like',[
+        'uses'=> 'PostController@postLike',
+        'as'=>'like'
+    ]);

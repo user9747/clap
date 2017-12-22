@@ -24,8 +24,8 @@ Dashboard
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('account')}}">account</a></li>
-        <li><a href="{{route('logout')}}">logout</a></li>
+        <li><a href="{{route('account')}}">Account</a></li>
+        <li><a href="{{route('logout')}}">Logout</a></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -58,8 +58,8 @@ Dashboard
                 </div>
                 <div class='interaction'>
                 <p>
-                    <a href='#'>Like</a>|
-                    <a href='#'>Dislike</a>
+                    <a href='#' class='like'>Like</a>|
+                    <a href='#' class='like'>Dislike</a>
                     @if(Auth::user() == $post->user)
                     |<a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
@@ -95,6 +95,7 @@ Dashboard
     <script>
     var token='{{Session::token()}}'
     var url='{{route('edit')}}'
+    var urllike='{{route('like')}}'
     </script>
     </div>
 </div>

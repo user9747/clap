@@ -38,6 +38,7 @@
         'as' =>'dashboard',
 
     ])->middleware('auth');
+    
     Route::post('createpost',[
     'uses' => 'PostController@createPost',
     'as'   => 'createpost'

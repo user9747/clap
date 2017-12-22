@@ -58,7 +58,7 @@ Dashboard
                 <div class='interaction'>
                 <p>
                     <a href='#'>Like</a>|
-                    <a href='#'>Dislike</a>|
+                    <a href='#'>Dislike</a>
                     @if(Auth::user() == $post->user)
                       |
                     <a href='#'>Edit</a>|

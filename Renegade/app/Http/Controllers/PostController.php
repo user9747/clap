@@ -50,6 +50,7 @@ class PostController extends Controller{
         
     }
     public function postlike(Request $request){
+        //Erorr is in the ajax request
         $update=false;
         $postid=$request['postId'];
         $islike=$request['isLike']===true;

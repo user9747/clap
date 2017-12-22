@@ -18,14 +18,14 @@ Dashboard
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
         </form>
         </section>
-  
+
         <div name='posts'class='row post'>
             <div class='col-md-6'>
             <header><h3>What others have to say?</h3></header>
                     @foreach($posts as $post)
                 <article>
                         <p>{{$post->body}}</p>
-                    
+
                 </article>
                 <div class='info'>
                     Posted by user {{$post->user->first_name}} on {{$post->created_at}}
@@ -35,13 +35,13 @@ Dashboard
                     <a href='#'>Like</a>|
                     <a href='#'>Dislike</a>|
                     <a href='#'>Edit</a>|
-                    <a href='#'>Delete</a>
+                    <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                 </p>
                 </div>
                 @endforeach
             </div>
         </div>
-        
 
-    </div>     
+
+    </div>
 </div>

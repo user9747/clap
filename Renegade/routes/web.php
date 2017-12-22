@@ -31,15 +31,19 @@
         'as' =>'postsignin'
     ]);
 
-	
+
 
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',
         'as' =>'dashboard',
+   ])->middleware('auth');
 
-    ])->middleware('auth');
-    
     Route::post('createpost',[
     'uses' => 'PostController@createPost',
     'as'   => 'createpost'
-]);
+    ])->middleware('auth');
+
+    Route::get('delete-post/{post_id}',[
+        'uses' => 'PostController@getDeletePost',
+        'as' =>'post.delete',
+   ])->middleware('auth');

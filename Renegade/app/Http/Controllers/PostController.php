@@ -10,11 +10,11 @@ class PostController extends Controller{
 
         $posts=Post::all();
         return view('dashboard',['posts'=>$posts]);
-  
+
         }
-  
+
     public function createPost(Request $request){
-        $post=new Post(); 
+        $post=new Post();
         $this->validate($request,[
             'body'=>'required|max:1000'
         ]);
@@ -26,6 +26,13 @@ class PostController extends Controller{
         return redirect()->route('dashboard')->with(['message'=>$message]);
 
     }
+
+    public function getDeletePost($post_id)
+      {
+        $post = Post::where('id',$post_id) ->first();
+        $post->delete();
+        return redirect()->route('dashboard')->with(['message' => 'Successfully Deleted!']);
+      }
 
 
 }

@@ -47,11 +47,11 @@ Dashboard
         <div name='posts'class='row post'>
             <div class='col-md-6'>
             <header><h3>What others have to say?</h3></header>
-                    @foreach($posts as $post)
+              @foreach($posts as $post)
                 <article>
                         <p>{{$post->body}}</p>
 
-                </article>
+              
                 <div class='info'>
                     Posted by user {{$post->user->first_name}} on {{$post->created_at}}
                 </div>
@@ -60,11 +60,12 @@ Dashboard
                     <a href='#'>Like</a>|
                     <a href='#'>Dislike</a>
                     @if(Auth::user() == $post->user)
-                    <a href='#' class='editpost'>Edit</a>|
+                    |<a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                   @endif
                 </p>
                 </div>
+              </article>
                 @endforeach
             </div>
         </div>
@@ -80,7 +81,7 @@ Dashboard
               </div>
               <div class="modal-body">
               <label>Edit</label>
-                <textarea class='form-control' rows='5' col='5'>
+                <textarea class='form-control' rows='5' col='5' id='editform'>
                 </textarea>
               </div>
               <div class="modal-footer">

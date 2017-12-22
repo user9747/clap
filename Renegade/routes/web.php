@@ -52,3 +52,7 @@
         'uses' => 'PostController@getDeletePost',
         'as' =>'post.delete',
    ]);
+    Route::post('/edit',function(\Illuminate\Http\Request $request){
+        return response()->json(['message' => $request['postId']]);
+
+    })->name('edit');

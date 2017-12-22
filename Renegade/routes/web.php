@@ -14,7 +14,7 @@
 
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('login');
 
     Route::get('signup', function () {
         return view('signup');
@@ -35,5 +35,6 @@
 
     Route::get('dashboard',[
         'uses' => 'UserController@getDashboard',
-        'as' =>'dashboard'
-    ]);
+        'as' =>'dashboard',
+
+    ])->middleware('auth');

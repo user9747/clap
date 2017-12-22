@@ -60,8 +60,7 @@ Dashboard
                     <a href='#'>Like</a>|
                     <a href='#'>Dislike</a>
                     @if(Auth::user() == $post->user)
-                      |
-                    <a href='#'>Edit</a>|
+                    |<a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                   @endif
                 </p>
@@ -80,7 +79,9 @@ Dashboard
                 </button>
               </div>
               <div class="modal-body">
-                <p>Modal body text goes here.</p>
+              <label>Edit</label>
+                <textarea class='form-control' rows='5' col='5'>
+                </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Save changes</button>

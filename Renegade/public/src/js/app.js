@@ -1,9 +1,11 @@
 var postid=-1;
+var postBody=null;
 $('.post').find('.interaction').find('.editpost').on('click',function(event){
     event.preventDefault();
-    var $post=event.target.parentNode.parentNode.parentNode.childNodes[1].textContent;
+    postBody=event.target.parentNode.parentNode.parentNode.childNodes[1]
+    var post=postBody.textContent;
     postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
-    $('#editform').val($post);
+    $('#editform').val(post);
     $('#editmodal').modal();
 });
 $('#modal-save').on('click',function(){
@@ -14,6 +16,7 @@ $('#modal-save').on('click',function(){
 
     })
         .done(function(msg){
-            console.log(msg['message']);
+            $(postBody).text(msg['new_body']);
+            $('#editmodal').modal('hide');
         });
 });

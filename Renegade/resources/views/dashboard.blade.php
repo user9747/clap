@@ -28,7 +28,7 @@ Dashboard
                     
                 </article>
                 <div class='info'>
-                    Posted by {{$post->user->first_name}} on {{$post->created_at}}
+                    Posted by user {{$post->user->first_name}} on {{$post->created_at}}
                 </div>
                 <div class='interaction'>
                 <p>

@@ -4,7 +4,7 @@
 Dashboard
 @endsection
 
-@include('postvalidate');
+@include('postvalidate')
 <header>
 <nav class="navbar navbar-default">
   <div class="container-fluid">

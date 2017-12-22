@@ -31,6 +31,11 @@
         'as' =>'postsignin'
     ]);
 
+    Route::get('logout',[
+        'uses' => 'UserController@getLogout',
+        'as' =>'logout',
+   ]);
+
 
 
     Route::get('dashboard',[
@@ -41,9 +46,9 @@
     Route::post('createpost',[
     'uses' => 'PostController@createPost',
     'as'   => 'createpost'
-    ])->middleware('auth');
+    ]);
 
     Route::get('delete-post/{post_id}',[
         'uses' => 'PostController@getDeletePost',
         'as' =>'post.delete',
-   ])->middleware('auth');
+   ]);

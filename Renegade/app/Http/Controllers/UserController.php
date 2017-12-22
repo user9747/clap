@@ -43,7 +43,8 @@ class UserController extends Controller{
         $user->interest=$interest;
 
         $user->save();
-        return redirect()->back();
+        Auth::login($user);
+        return redirect()->route('dashboard');
 
     }
 
@@ -65,6 +66,13 @@ class UserController extends Controller{
 	     return redirect()->back();
     }
 
+
+
+    public function getLogout()
+    {
+      Auth::logout();
+      return redirect()->route('login');
+    }
 
 
 

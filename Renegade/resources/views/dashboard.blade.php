@@ -60,7 +60,7 @@ Dashboard
                     <a href='#'>Like</a>|
                     <a href='#'>Dislike</a>
                     @if(Auth::user() == $post->user)
-                    |<a href='#' class='editpost'>Edit</a>|
+                    <a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                   @endif
                 </p>

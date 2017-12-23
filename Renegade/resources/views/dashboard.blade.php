@@ -58,8 +58,8 @@ Dashboard
                 </div>
                 <div class='interaction'>
                 <p>
-                    <a href='#' class='like' id='like'>Like</a>|
-                    <a href='#' class='like' id='like'>Dislike</a>
+                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>|
+                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t like this post' : 'Dislike' : 'Dislike'  }}</a>
                     @if(Auth::user() == $post->user)
                     |<a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
@@ -92,7 +92,7 @@ Dashboard
             </div>
           </div>
         </div>
-    
+
     </div>
     <script>
       var token='{{Session::token()}}';

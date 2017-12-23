@@ -53,7 +53,7 @@ class PostController extends Controller{
        
         $update=false;
         $postid=$request['postId'];
-        $islike=$request['isLike']===true;
+        $islike=$request['isLike']==='true';
         $post=Post::find($postid);
         if(!$post){
             return null;

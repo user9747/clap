@@ -92,10 +92,11 @@ Dashboard
             </div>
           </div>
         </div>
-    <script>
-    var token='{{Session::token()}}';
-    var url='{{route('edit')}}';
-    var likeurl='{{route('like')}}';
-    </script>
+    
     </div>
+    <script>
+      var token='{{Session::token()}}';
+      var url='{{route('edit')}}';
+      var likeurl='{{route('like')}}';
+      </script>
 </div>

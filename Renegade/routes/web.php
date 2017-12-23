@@ -50,7 +50,7 @@
     'uses' => 'UserController@getUserImage',
     'as'   => 'account.image'
   ]);
-
+ 
 
 
     Route::get('dashboard',[
@@ -71,7 +71,11 @@
         'uses'=>'PostController@editPost',
         'as'=>'edit'
  ]);
-        Route::post('/like',[
-        'uses' => 'PostController@postlike',
-        'as'=>'like'    
-        ]);
+
+ Route::post('/like',[
+    'uses' => 'PostController@postLike',
+    'as'=>'like',
+    function(){
+        echo "Hellohaihuhu";
+    }    
+    ]);

@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers;
 use \App\Post;
-//use \App\Likes;
+use \App\Likes;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -49,8 +49,8 @@ class PostController extends Controller{
         return response()->json(['new_body'=>$post->body],200);
         
     }
-    public function postlike(Request $request){
-       echo "<h1>Hello</h1>";
+    public function postLike(Request $request){
+       
         $update=false;
         $postid=$request['postId'];
         $islike=$request['isLike']===true;
@@ -61,14 +61,14 @@ class PostController extends Controller{
         $user=Auth::user();
         $likes=$user->likes()->where('post_id',$postid)->first();
         if($likes){
-            $alreadylike=$like->like;
+            $alreadylike=$likes->like;
             $update=true;
             if($alreadylike==$islike){
                 $likes->delete();
                 return null;
             }
         }else{
-            $likes=new Like();
+            $likes=new Likes();
         }
         $likes->like=$islike;
         $likes->user_id=$user->id;

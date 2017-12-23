@@ -16,21 +16,24 @@ $('#modal-save').on('click',function(){
 
     })
         .done(function(msg){
+            
             $(postBody).text(msg['new_body']);
             $('#editmodal').modal('hide');
         });
 });
 $('.like').on('click',function(event){
     event.preventDefault();
-    postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
-    var islike=event.target.previousElementSibling==null;   
+    var postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
+    var isLike=event.target.previousElementSibling==null; 
+    console.log(postid);
     $.ajax({
         method:'POST',
         url:likeurl,
-        data:{isLike: islike, postId: postid,success:function(){console.log('Success');},error:function(){console.log('Error');}, _token: token}
+        data:{isLike:isLike,postId: postid,_token:token}
+
     })
     .done(function(){
-        console.log();
+        console.log('log');
 
     });
 });

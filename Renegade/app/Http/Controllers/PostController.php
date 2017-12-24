@@ -50,7 +50,7 @@ class PostController extends Controller{
         
     }
     public function postLike(Request $request){
-       
+        $count=0;
         $update=false;
         $postid=$request['postId'];
         $islike=$request['isLike']==='true';
@@ -60,6 +60,7 @@ class PostController extends Controller{
         }
         $user=Auth::user();
         $likes=$user->likes()->where('post_id',$postid)->first();
+        
         if($likes){
             $alreadylike=$likes->like;
             $update=true;
@@ -79,7 +80,16 @@ class PostController extends Controller{
         else{
             $likes->save();
         }
-        return null;
+        $lposts=new Like();
+        $likedposts=$lposts->where('post_id',$postid);
+        foreach($likedposts as &$likepost){
+            if($likepost->like)
+                $count++;
+            else
+                $count--;    
+        }
+        
+        return redirect()->route('dashboard')->with(['number'=>$count]);
     }    
 
 }

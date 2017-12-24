@@ -75,7 +75,5 @@
  Route::post('/like',[
     'uses' => 'PostController@postLike',
     'as'=>'like',
-    function(){
-        echo "Hellohaihuhu";
-    }    
+  
     ]);

@@ -13,4 +13,7 @@ class Post extends Model
         return $this->hasMany('App\Likes');
 
     }
+    public function tags(){
+        return $this->belongsTo('\App\Tag');
+    }
 }

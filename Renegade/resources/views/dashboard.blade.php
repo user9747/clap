@@ -40,8 +40,11 @@ Dashboard
                 <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
             </div>
                 <button type='submit' class='btn btn-primary'>Post</button>
+            
+                
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
         </form>
+                <button type='submit' class='btn btn-primary addtag'>+Add tag</button>
         </section>
 
         <div name='posts'class='row post'>
@@ -92,11 +95,36 @@ Dashboard
             </div>
           </div>
         </div>
+        <div class="modal" tabindex="-1" role="dialog" id='tagmodal'>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Tags</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <label>Add tags</label>
+                <input type='checkbox' id='t1' value='t1'>T1</input>
+                <input type='checkbox' id='t2' value='t2'>T2</input>
+                <input type='checkbox' id='t3' value='t3'>T3</input>
+                <input type='checkbox' id='t4' value='t4'>T4</input>
+                <input type='checkbox' id='t5' value='t5'>T5</input>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id='tagsave'>Save </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
     </div>
     <script>
       var token='{{Session::token()}}';
       var url='{{route('edit')}}';
       var likeurl='{{route('like')}}';
+      var tagurl='{{route('addtag')}}';
       </script>
 </div>

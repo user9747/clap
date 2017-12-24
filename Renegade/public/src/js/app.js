@@ -43,3 +43,23 @@ $('.like').on('click',function(event){
             }
     });
 });
+$('.addtag').on('click',function(){
+    $('#tagmodal').modal();
+});
+$('#tagsave').on('click',function(){
+    var t1=document.getElementById('t1').checked;
+    var t2=document.getElementById('t2').checked;
+    var t3=document.getElementById('t3').checked;
+    var t4=document.getElementById('t4').checked;
+    var t5=document.getElementById('t5').checked;
+    $.ajax({
+        method:'POST',
+        url:tagurl,
+        data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,_token:token}
+
+    })
+    .done(function(){
+        $('#tagmodal').modal('hide');
+    });
+
+});

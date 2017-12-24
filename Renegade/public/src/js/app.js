@@ -16,7 +16,7 @@ $('#modal-save').on('click',function(){
 
     })
         .done(function(msg){
-
+            
             $(postBody).text(msg['new_body']);
             $('#editmodal').modal('hide');
         });
@@ -24,7 +24,7 @@ $('#modal-save').on('click',function(){
 $('.like').on('click',function(event){
     event.preventDefault();
     var postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
-    var isLike=event.target.previousElementSibling==null;
+    var isLike=event.target.previousElementSibling==null; 
     console.log(postid);
     $.ajax({
         method:'POST',
@@ -32,12 +32,8 @@ $('.like').on('click',function(event){
         data:{isLike:isLike,postId: postid,_token:token}
 
     })
-    .done(function() {
-            event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this post' : 'Dislike';
-            if (isLike) {
-                event.target.nextElementSibling.innerText = 'Dislike';
-            } else {
-                event.target.previousElementSibling.innerText = 'Like';
-            }
+    .done(function(){
+        console.log('log');
+
     });
 });

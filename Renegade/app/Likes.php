@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class Likes extends Model
 {
-    //
     public function User(){
         return $this->belongsTo('\App\User');
     }

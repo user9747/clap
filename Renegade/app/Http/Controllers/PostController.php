@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers;
 use \App\Post;
-use \App\Like;
+use \App\Likes;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -68,10 +68,9 @@ class PostController extends Controller{
                 return null;
             }
         }else{
-            $likes=new Like();
+            $likes=new Likes();
         }
         $likes->like=$islike;
-        $likes->dislikes=$islike;
         $likes->user_id=$user->id;
         $likes->post_id=$postid;
         if($update){

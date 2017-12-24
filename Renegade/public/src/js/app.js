@@ -1,5 +1,6 @@
 var postid=-1;
 var postBody=null;
+var msg=null;
 $('.post').find('.interaction').find('.editpost').on('click',function(event){
     event.preventDefault();
     postBody=event.target.parentNode.parentNode.parentNode.childNodes[1]
@@ -33,11 +34,12 @@ $('.like').on('click',function(event){
 
     })
     .done(function(msg) {
-            event.target.innerText = isLike ? event.target.innerText == 'Like' ? ' You liked this post': 'Like' : event.target.innerText == 'Dislike' ? msg['dislikes'] : 'Dislike';
+            
+            event.target.innerText = isLike ? event.target.innerText == (msg['number']-1)+' Like'?msg['number']+' You liked this post' :msg['number']+' Like' : event.target.innerText == (msg['dislikes']-1)+' Dislike' ? msg['dislikes']+' You disliked this post':msg['dislikes']+' Dislike';
             if (isLike) {
-                event.target.nextElementSibling.innerText = 'Dislike';
+                event.target.nextElementSibling.innerText = msg['dislikes']+' Dislike';
             } else {
-                event.target.previousElementSibling.innerText = msg['number'];
+                event.target.previousElementSibling.innerText = msg['number']+' Like';
             }
     });
 });

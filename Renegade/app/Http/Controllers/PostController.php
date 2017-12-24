@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 class PostController extends Controller{
-
+    
     public function getDashboard(){
 
         $posts=Post::orderBy('created_at','desc')->get();
-        return view('dashboard',['posts'=>$posts]);
+        foreach($posts as $post){
+            $likecount[$post->id]=$this->likecount($post->id);
+        }
+        return view('dashboard',['posts'=>$posts,'likecount'=>$likecount]);
 
         }
 
@@ -52,8 +55,7 @@ class PostController extends Controller{
     }
 
     public function likecount($postid){
-        $likes=DB::table('likes')->get();
-        $postlike=$likes->where('post_id',$postid);
+        $postlike=DB::table('likes')->get()->where('post_id',$postid);
         $lcount=0;
         $dcount=0;
         foreach($postlike as &$likepost){

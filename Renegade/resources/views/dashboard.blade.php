@@ -3,7 +3,6 @@
 @section('title')
 Dashboard
 @endsection
-<!--@include('likecount')-->
 @include('postvalidate')
 <header>
 <nav class="navbar navbar-default">
@@ -59,8 +58,8 @@ Dashboard
                 <div class='interaction'>
                 <p>
                  
-                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>|
-                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t like this post' : 'Dislike' : 'Dislike'  }}</a>
+                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>|
+                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
                     @if(Auth::user() == $post->user)
                     |<a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>

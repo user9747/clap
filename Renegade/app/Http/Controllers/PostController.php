@@ -3,6 +3,7 @@
 namespace app\Http\Controllers;
 use \App\Post;
 use \App\Like;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -49,6 +50,21 @@ class PostController extends Controller{
         return response()->json(['new_body'=>$post->body],200);
         
     }
+
+    public function likecount($postid){
+        $likes=DB::table('likes')->get();
+        $postlike=$likes->where('post_id',$postid);
+        $lcount=0;
+        $dcount=0;
+        foreach($postlike as &$likepost){
+            if($likepost->like)
+                $lcount++;
+            else
+                $dcount++;    
+                
+        }
+            return ['likes'=>$lcount,'dislikes'=>$dcount];
+    }
     public function postLike(Request $request){
         $count=0;
         $update=false;
@@ -66,7 +82,7 @@ class PostController extends Controller{
             $update=true;
             if($alreadylike==$islike){
                 $likes->delete();
-                return null;
+                
             }
         }else{
             $likes=new Like();
@@ -80,16 +96,9 @@ class PostController extends Controller{
         else{
             $likes->save();
         }
-        $lposts=new Like();
-        $likedposts=$lposts->where('post_id',$postid);
-        foreach($likedposts as &$likepost){
-            if($likepost->like)
-                $count++;
-            else
-                $count--;    
-        }
+        $count=$this->likecount($postid);
         
-        return redirect()->route('dashboard')->with(['number'=>$count]);
+        return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
     }    
 
 }

@@ -25,19 +25,19 @@ $('.like').on('click',function(event){
     event.preventDefault();
     var postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
     var isLike=event.target.previousElementSibling==null;
-    console.log(postid);
+
     $.ajax({
         method:'POST',
         url:likeurl,
         data:{isLike:isLike,postId: postid,_token:token}
 
     })
-    .done(function() {
-            event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this post' : 'Dislike';
+    .done(function(msg) {
+            event.target.innerText = isLike ? event.target.innerText == 'Like' ? ' You liked this post': 'Like' : event.target.innerText == 'Dislike' ? msg['dislikes'] : 'Dislike';
             if (isLike) {
                 event.target.nextElementSibling.innerText = 'Dislike';
             } else {
-                event.target.previousElementSibling.innerText = 'Like';
+                event.target.previousElementSibling.innerText = msg['number'];
             }
     });
 });

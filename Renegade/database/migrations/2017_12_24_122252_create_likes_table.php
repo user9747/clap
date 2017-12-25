@@ -21,7 +21,7 @@ class CreateLikesTable extends Migration
             $table->boolean('like');
         });
     }
-
+  
     /**
      * Reverse the migrations.
      *

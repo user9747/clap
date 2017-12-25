@@ -3,6 +3,8 @@
 namespace app\Http\Controllers;
 use \App\Post;
 use \App\Like;
+use \App\Rawtag;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
@@ -20,7 +22,8 @@ class PostController extends Controller{
         }
 
     public function createPost(Request $request){
-        $post=new Post();
+        $post=new Post;
+        $post->id=$request['postid'];
         $this->validate($request,[
             'body'=>'required|max:1000'
         ]);

@@ -34,8 +34,8 @@ Dashboard
 <div class='row newpost'>
     <div class='col-md-6 col-md-offset-5'>
         <section class='newpost'>
-        <header><h3>What do you have to say?</h3></header>
-        <form action='{{route('createpost')}}' method='post'>
+        <header><h3>What do you have to say?{{Session::get('thepost')}}</h3></header>
+        <form action='{{route('createpost',['postid'=>Session::get('thepost')])}}' method='post'>
             <div class='form-group'>
                 <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
             </div>

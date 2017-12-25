@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 class PostController extends Controller{
     
     public function getDashboard(){
-
         $posts=Post::orderBy('created_at','desc')->get();
+        if($posts)
         foreach($posts as $post){
             $likecount[$post->id]=$this->likecount($post->id);
         }
@@ -22,12 +22,12 @@ class PostController extends Controller{
         }
 
     public function createPost(Request $request){
-        $post=new Post;
-        $post->id=$request['postid'];
+        $post=new Post();
         $this->validate($request,[
             'body'=>'required|max:1000'
         ]);
         $post->body=$request['body'];
+        $post->tagid=$request['tagid'];
         $message='There was an error';
         if($request->user()->posts()->save($post)){
             $message='Post successfully created';

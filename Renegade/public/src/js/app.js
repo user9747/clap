@@ -1,6 +1,7 @@
 var postid=-1;
 var postBody=null;
 var msg=null;
+
 $('.post').find('.interaction').find('.editpost').on('click',function(event){
     event.preventDefault();
     postBody=event.target.parentNode.parentNode.parentNode.childNodes[1]
@@ -9,6 +10,7 @@ $('.post').find('.interaction').find('.editpost').on('click',function(event){
     $('#editform').val(post);
     $('#editmodal').modal();
 });
+
 $('#modal-save').on('click',function(){
     $.ajax({
         method:'POST',
@@ -22,6 +24,7 @@ $('#modal-save').on('click',function(){
             $('#editmodal').modal('hide');
         });
 });
+
 $('.like').on('click',function(event){
     event.preventDefault();
     var postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
@@ -43,9 +46,11 @@ $('.like').on('click',function(event){
             }
     });
 });
+
 $('.addtag').on('click',function(){
     $('#tagmodal').modal();
 });
+
 $('#tagsave').on('click',function(){
     var t1=document.getElementById('t1').checked;
     var t2=document.getElementById('t2').checked;
@@ -58,7 +63,8 @@ $('#tagsave').on('click',function(){
         data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,_token:token}
 
     })
-    .done(function(){
+    .done(function(msg){
+        console.log(msg['tagid']);
         $('#tagmodal').modal('hide');
     });
 

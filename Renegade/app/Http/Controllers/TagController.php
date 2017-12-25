@@ -11,6 +11,6 @@ class TagController extends Controller{
         $tosave=new Tag();
         $tosave->tags=$string;
         $tosave->save();
-        return redirect()->route('dashboard')->with(['thepost'=>$post->id]);
+        return response()->json(['tagid'=>$tosave->id]);
     }
 }

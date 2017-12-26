@@ -129,6 +129,7 @@ Dashboard
       var token='{{Session::token()}}';
       var url='{{route('edit')}}';
       var likeurl='{{route('like')}}';
+      var  dashboard='{{route('dashboard')}}';
       var createpost='{{route('createpost')}}';
       </script>
 </div>

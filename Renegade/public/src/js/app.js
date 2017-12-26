@@ -71,13 +71,14 @@ $('#tagsave').on('click',function(event){
         document.getElementById('success').innerHTML=msg['message'];
         else
         document.getElementById('error').innerHTML=msg['message'];
-        $.ajax({
-            method:'GET',
-            url:'dashboard'
-            })
-        .done(function(){
-            console.log('Success');
-        })    
+        location.reload(true);
+        // $.ajax({
+        //     method:'GET',
+        //     url:dashboard
+        //     })
+        // .done(function(){
+        //     console.log('Success');
+        // })    
     });
 
 });

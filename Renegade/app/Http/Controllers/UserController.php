@@ -86,12 +86,15 @@ class UserController extends Controller{
   {
     $this ->validate($request,[
       'first_name' => 'required|max:120',
+      'last_name' => 'required|max:120',
     ]);
 
     $user = Auth::user();
     $user->first_name = $request['first_name'];
+    $user->last_name = $request['last_name'];
     $file = $request->file('image');
     $filename = $request['first_name'] . '-' .$user->id . '.jpg';
+    $user->save();
     if($file)
     {
       Storage::disk('local')->put($filename,File::get($file));

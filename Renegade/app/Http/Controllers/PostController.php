@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 class PostController extends Controller{
-    
+
     public function getDashboard(){
         $posts=Post::orderBy('created_at','desc')->get();
+        $likecount[0]=0;
         if($posts)
         foreach($posts as $post){
             $likecount[$post->id]=$this->likecount($post->id);
@@ -54,7 +55,7 @@ class PostController extends Controller{
         $post->body=$request['body'];
         $post->update();
         return response()->json(['new_body'=>$post->body],200);
-        
+
     }
 
     public function likecount($postid){
@@ -65,8 +66,8 @@ class PostController extends Controller{
             if($likepost->like)
                 $lcount++;
             else
-                $dcount++;    
-                
+                $dcount++;
+
         }
             return ['likes'=>$lcount,'dislikes'=>$dcount];
     }
@@ -81,13 +82,13 @@ class PostController extends Controller{
         }
         $user=Auth::user();
         $likes=$user->likes()->where('post_id',$postid)->first();
-        
+
         if($likes){
             $alreadylike=$likes->like;
             $update=true;
             if($alreadylike==$islike){
                 $likes->delete();
-                
+
             }
         }else{
             $likes=new Like();
@@ -102,11 +103,8 @@ class PostController extends Controller{
             $likes->save();
         }
         $count=$this->likecount($postid);
-        
+
         return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
-    }    
+    }
 
 }
-
-
-

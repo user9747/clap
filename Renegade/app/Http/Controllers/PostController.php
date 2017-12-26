@@ -4,7 +4,7 @@ namespace app\Http\Controllers;
 use \App\Post;
 use \App\Like;
 use \App\Rawtag;
-
+use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\Controller;
@@ -28,7 +28,7 @@ class PostController extends Controller{
             'body'=>'required|max:1000'
         ]);
         $post->body=$request['body'];
-        $post->tagid=$request['tagid'];
+        
         $message='There was an error';
         if($request->user()->posts()->save($post)){
             $message='Post successfully created';

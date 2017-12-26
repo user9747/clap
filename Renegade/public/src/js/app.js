@@ -60,7 +60,7 @@ $('#tagsave').on('click',function(event){
     var t5=document.getElementById('t5').checked;
     $.ajax({
         method:'POST',
-        url:'createpost',
+        url:createpost,
         data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,body:body,_token:token}
 
     })

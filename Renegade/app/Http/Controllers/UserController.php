@@ -33,7 +33,7 @@ class UserController extends Controller{
         $last_name=$request['last_name'];
         $gender=$request['gender'];
         $channel=$request['channel'];
-        $interest=['i1'=>$this->isOn($request['i1']),'i2'=>$this->isOn($request['i2']),'i3'=>$this->isOn($request['i3']),'i4'=>$this->isOn($request['i4']),'i5'=>$this->isOn($request['i5'])];
+        $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
 
         $user=new User();
         $user->email=$email;
@@ -51,9 +51,9 @@ class UserController extends Controller{
     }
     public function isOn($interest){
       if($interest=='on')
-        return true;
+        return 1;
       else
-        return false;  
+        return 0;  
     }
     public function SignIn(Request $request)
     {

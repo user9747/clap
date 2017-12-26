@@ -56,14 +56,15 @@ Dashboard
             <header><h3>What others have to say?</h3></header>
 
               @foreach($posts as $post)
-                
                 @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
+                <?php$tags=unserialize($post->tags)?>
+                 @if(($userinterest['i1']&&$tags['t1'])||($userinterest['i2']&&$tags['t2'])||($userinterest['i3']&&$tags['t3'])||($userinterest['i4']&&$tags['t4'])||($userinterest['i5']&&$tags['t5']))
                 <article data-postid='{{$post->id}}'>
                         <p>{{$post->body}}</p>
 
 
                 <div class='info'>
-                    Posted by user {{$post->user->first_name}} on {{$post->created_at}}
+                    Posted by user {{$post->user['first_name']}} on {{$post->created_at}}
                 </div>
                 <div class='interaction'>
                 <p>
@@ -77,14 +78,17 @@ Dashboard
                 </p>
                 </div>
               </article>
+              @endif
             @endif
             @if(Auth::user()->channel == "channel1")
-            <article data-postid='{{$post->id}}'>
-                    <p>{{$post->body}}</p>
+            <?php $tag=unserialize($post->tags)?>
+              @if((($userinterest['i1']!=-1)&&$tag['t1'])||(($userinterest['i5']!=-1)&&$tag['t5']))
+               <article data-postid='{{$post->id}}'>
+                    <p>{{$userinterest['i1'] }}</p>
 
 
             <div class='info'>
-                Posted by user {{$post->user->first_name}} on {{$post->created_at}}
+                Posted by user {{$post->user['first_name']}} on {{$post->created_at}}
             </div>
             <div class='interaction'>
             <p>
@@ -98,7 +102,8 @@ Dashboard
             </p>
             </div>
           </article>
-        @endif
+              @endif
+          @endif
                 @endforeach
             </div>
         </div>

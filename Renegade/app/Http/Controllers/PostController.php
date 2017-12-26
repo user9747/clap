@@ -19,7 +19,7 @@ class PostController extends Controller{
         foreach($posts as $post){
             $likecount[$post->id]=$this->likecount($post->id);
         }
-        return view('dashboard',['posts'=>$posts,'likecount'=>$likecount,'user'=>$userinterest]);
+        return view('dashboard',['posts'=>$posts,'likecount'=>$likecount,'userinterest'=>$userinterest]);
 
         }
 

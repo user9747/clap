@@ -10,7 +10,10 @@ $('.post').find('.interaction').find('.editpost').on('click',function(event){
     $('#editform').val(post);
     $('#editmodal').modal();
 });
+$('#postit').on('click',function(){
+    $('#tagmodal').modal();
 
+});
 $('#modal-save').on('click',function(){
     $.ajax({
         method:'POST',
@@ -47,11 +50,9 @@ $('.like').on('click',function(event){
     });
 });
 
-$('.addtag').on('click',function(){
-    $('#tagmodal').modal();
-});
 
-$('#tagsave').on('click',function(){
+$('#tagsave').on('click',function(event){
+    var body=document.getElementById('newpost').value;
     var t1=document.getElementById('t1').checked;
     var t2=document.getElementById('t2').checked;
     var t3=document.getElementById('t3').checked;
@@ -59,8 +60,8 @@ $('#tagsave').on('click',function(){
     var t5=document.getElementById('t5').checked;
     $.ajax({
         method:'POST',
-        url:tagurl,
-        data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,_token:token}
+        url:createpost,
+        data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,body:body,_token:token}
 
     })
     .done(function(msg){

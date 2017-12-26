@@ -3,7 +3,7 @@
 namespace app\Http\Controllers;
 use \App\Post;
 use \App\Like;
-use \App\Rawtag;
+use \App\Tag;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +24,15 @@ class PostController extends Controller{
 
     public function createPost(Request $request){
         $post=new Post();
+        $tagid=new Tag();
+        $passedtag=['t1'=>$request['t1'],'t2'=>$request['t2'],'t3'=>$request['t3'],'t4'=>$request['t4'],'t5'=>$request['t5']];
+        $tagid->tags=serialize($passedtag);
+        $tagid->save();
         $this->validate($request,[
             'body'=>'required|max:1000'
         ]);
         $post->body=$request['body'];
-        
+        $post->tagid=$tagid->id;
         $message='There was an error';
         if($request->user()->posts()->save($post)){
             $message='Post successfully created';

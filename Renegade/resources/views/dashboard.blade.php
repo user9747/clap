@@ -35,16 +35,16 @@ Dashboard
     <div class='col-md-6 col-md-offset-5'>
         <section class='newpost'>
         <header><h3>What do you have to say?</h3></header>
-        <form action='{{route('createpost',['postid'=>Session::get('tagid')])}}' method='post'>
+  
             <div class='form-group'>
                 <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
             </div>
-                <button type='submit' class='btn btn-primary'>Post</button>
+                <button type='submit' class='btn btn-primary' id='postit'>Post</button>
             
                 
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
-        </form>
-                <button type='submit' class='btn btn-primary addtag'>+Add tag</button>
+
+        
         </section>
 
         <div name='posts'class='row post'>
@@ -125,6 +125,6 @@ Dashboard
       var token='{{Session::token()}}';
       var url='{{route('edit')}}';
       var likeurl='{{route('like')}}';
-      var tagurl='{{route('addtag')}}';
+      var createpost='{{route('createpost')}}';
       </script>
 </div>

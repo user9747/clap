@@ -41,7 +41,7 @@ class PostController extends Controller{
     }
     
       //return redirect()->route('dashboard')->with(['message' => $message]);
-          return response()->json(['message'=>$message,'body'=>$request['body']], 200);
+        return response()->json(['message'=>$message,'body'=>$request['body']], 200);
           
     }
 

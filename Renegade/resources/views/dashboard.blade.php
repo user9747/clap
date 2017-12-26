@@ -82,9 +82,9 @@ Dashboard
             @endif
             @if(Auth::user()->channel == "channel1")
             <?php $tag=unserialize($post->tags)?>
-              @if((($userinterest['i1']!=-1)&&$tag['t1'])||(($userinterest['i5']!=-1)&&$tag['t5']))
+              @if((($userinterest['i1']==1)&&($tag['t1']==True))||(($userinterest['i5']==1)&&($tag['t5']==True)))
                <article data-postid='{{$post->id}}'>
-                    <p>{{$userinterest['i1'] }}</p>
+                    <p>{{$post->body }}</p>
 
 
             <div class='info'>
@@ -98,7 +98,7 @@ Dashboard
                 @if(Auth::user() == $post->user)
                 |<a href='#' class='editpost'>Edit</a>|
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-              @endif
+                @endif
             </p>
             </div>
           </article>

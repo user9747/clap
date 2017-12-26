@@ -39,22 +39,25 @@ Dashboard
     <div class='col-md-6 col-md-offset-5'>
         <section class='newpost'>
         <header><h3>What do you have to say?</h3></header>
-  
+
             <div class='form-group'>
                 <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
             </div>
                 <button type='submit' class='btn btn-primary' id='postit'>Post</button>
-            
-                
+
+
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
 
-        
+
         </section>
 
         <div name='posts'class='row post'>
             <div class='col-md-6'>
             <header><h3>What others have to say?</h3></header>
+
               @foreach($posts as $post)
+                
+                @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
                 <article data-postid='{{$post->id}}'>
                         <p>{{$post->body}}</p>
 
@@ -64,7 +67,7 @@ Dashboard
                 </div>
                 <div class='interaction'>
                 <p>
-                 
+
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>|
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
                     @if(Auth::user() == $post->user)
@@ -74,6 +77,28 @@ Dashboard
                 </p>
                 </div>
               </article>
+            @endif
+            @if(Auth::user()->channel == "channel1")
+            <article data-postid='{{$post->id}}'>
+                    <p>{{$post->body}}</p>
+
+
+            <div class='info'>
+                Posted by user {{$post->user->first_name}} on {{$post->created_at}}
+            </div>
+            <div class='interaction'>
+            <p>
+
+                <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>|
+                <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
+                @if(Auth::user() == $post->user)
+                |<a href='#' class='editpost'>Edit</a>|
+                <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
+              @endif
+            </p>
+            </div>
+          </article>
+        @endif
                 @endforeach
             </div>
         </div>

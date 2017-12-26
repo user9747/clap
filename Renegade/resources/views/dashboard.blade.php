@@ -1,9 +1,13 @@
 @extends('master')
-
+<link rel='stylesheet' href={{URL::to('src/css/dashboard.css')}}>
 @section('title')
 Dashboard
 @endsection
 @include('postvalidate')
+<div id='error' class='error'>
+</div>
+<div id='success' class='success'>
+</div>
 <header>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -125,6 +129,6 @@ Dashboard
       var token='{{Session::token()}}';
       var url='{{route('edit')}}';
       var likeurl='{{route('like')}}';
-      var createpost='{{route('createpost')}}';
+      var creatpost='{{route('createpost')}}';
       </script>
 </div>

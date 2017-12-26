@@ -77,8 +77,4 @@
     'as'=>'like',
   
     ]);
-    Route::post('/addtag',[
-        'uses'=>'TagController@manualtag',
-        'as'=>'addtag'
-
-    ]);
+    

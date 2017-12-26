@@ -28,17 +28,21 @@ class PostController extends Controller{
         $passedtag=['t1'=>$request['t1'],'t2'=>$request['t2'],'t3'=>$request['t3'],'t4'=>$request['t4'],'t5'=>$request['t5']];
         $tagid->tags=serialize($passedtag);
         $tagid->save();
+        $message='Body field required';
+        if($request['body']){
+        $post->body=$request['body'];
+        $post->tagid=$tagid->id;
         $this->validate($request,[
             'body'=>'required|max:1000'
         ]);
-        $post->body=$request['body'];
-        $post->tagid=$tagid->id;
-        $message='There was an error';
         if($request->user()->posts()->save($post)){
-            $message='Post successfully created';
+           $message='Post successfully created';
         }
-        return redirect()->route('dashboard')->with(['message'=>$message]);
-
+    }
+    
+      //return redirect()->route('dashboard')->with(['message' => $message]);
+          return response()->json(['message'=>$message,'body'=>$request['body']], 200);
+          
     }
 
     public function getDeletePost($post_id)

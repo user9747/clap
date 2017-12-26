@@ -60,13 +60,19 @@ $('#tagsave').on('click',function(event){
     var t5=document.getElementById('t5').checked;
     $.ajax({
         method:'POST',
-        url:createpost,
+        url:'createpost',
         data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,body:body,_token:token}
 
     })
     .done(function(msg){
-        console.log(msg['tagid']);
+        console.log(msg['message']);
         $('#tagmodal').modal('hide');
+        $(postBody).text(msg['body']);
+        if(msg['message']=='Post successfully created')
+        document.getElementById('success').innerHTML=msg['message'];
+        else
+        document.getElementById('error').innerHTML=msg['message'];
+
     });
 
 });

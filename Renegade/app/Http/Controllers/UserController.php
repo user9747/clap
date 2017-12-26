@@ -26,7 +26,6 @@ class UserController extends Controller{
           'password' => 'required|min:4',
           'gender' => 'required',
           'channel' => 'required',
-          'interest' => 'required'
           ]);
         $email=$request['email'];
         $password=bcrypt($request['password']);
@@ -34,7 +33,7 @@ class UserController extends Controller{
         $last_name=$request['last_name'];
         $gender=$request['gender'];
         $channel=$request['channel'];
-        $interest=$request['interest'];
+        $interest=['i1'=>$this->isOn($request['i1']),'i2'=>$this->isOn($request['i2']),'i3'=>$this->isOn($request['i3']),'i4'=>$this->isOn($request['i4']),'i5'=>$this->isOn($request['i5'])];
 
         $user=new User();
         $user->email=$email;
@@ -43,14 +42,19 @@ class UserController extends Controller{
         $user->last_name=$last_name;
         $user->gender=$gender;
         $user->channel=$channel;
-        $user->interest=$interest;
+        $user->interest=serialize($interest);
 
         $user->save();
         Auth::login($user);
         return redirect()->route('dashboard');
 
     }
-
+    public function isOn($interest){
+      if($interest=='on')
+        return true;
+      else
+        return false;  
+    }
     public function SignIn(Request $request)
     {
 

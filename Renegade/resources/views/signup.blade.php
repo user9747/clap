@@ -76,8 +76,12 @@ Sign Up
                   
                   <div class='form-group'>
                   <select name="channel">
-                    <option value="channel1">Channel1</option>
-                    <option value="channel2">Channel2</option>
+                    <option value=""disabled selected>Profession</option>
+                    <option value="channel1">Student</option>
+                    <option value="channel2">Engineer</option>
+                    <option value="channel2">Doctor</option>
+                    <option value="channel2">Police</option>
+                    <option value="channel2">Techie</option>
                   </select>
                   </div>
                 </div>

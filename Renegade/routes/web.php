@@ -31,6 +31,9 @@
         'as' =>'postsignin'
     ]);
 
+    Route::get('login/facebook', 'UserController@redirectToProvider');
+    Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
+
     Route::get('logout',[
         'uses' => 'UserController@getLogout',
         'as' =>'logout',
@@ -50,7 +53,7 @@
     'uses' => 'UserController@getUserImage',
     'as'   => 'account.image'
   ]);
- 
+
 
 
     Route::get('dashboard',[
@@ -75,6 +78,5 @@
  Route::post('/like',[
     'uses' => 'PostController@postLike',
     'as'=>'like',
-  
+
     ]);
-    

@@ -35,10 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    'facebook' => [
-    'client_id' => '993834440793899',         // Your GitHub Client ID
-    'client_secret' => '3a486fa9b6545e9f99240f272a987811', // Your GitHub Client Secret
-    'redirect' => 'http://localhost:8000/login/facebook/callback',
-],
+    
+    'google' => [
+    'client_id' => '493534719273-7edqq5va6uegev6i687ver91uhkh702q.apps.googleusercontent.com',         // Your GitHub Client ID
+    'client_secret' => 'XbHpFjuOGh1gBLg2VkhMv62R', // Your GitHub Client Secret
+    'redirect' => 'http://renegadecet.ml/login/google/callback',
+    ],
 
 ];

@@ -29,7 +29,7 @@ class UserController extends Controller{
           'confirmpassword'=>'required_with:password|same:password|min:4',
           'gender' => 'required',
           'channel' => 'required',
-          'interest'
+
           ]);
         $password=bcrypt($request['password']);
         $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
@@ -113,7 +113,7 @@ class UserController extends Controller{
     return new Response($file,200);
   }
 
-  public function redirectToProvider()
+  public function redirectToFacebook()
   {
       return Socialite::driver('facebook')->redirect();
   }
@@ -123,7 +123,7 @@ class UserController extends Controller{
    *
    * @return \Illuminate\Http\Response
    */
-  public function handleProviderCallback()
+  public function handleFacebookCallback()
   {
      $userfb = Socialite::driver('facebook')->user();
     //$userfb = Socialite::driver('facebook')->stateless()->user();
@@ -135,8 +135,77 @@ class UserController extends Controller{
 
   }
 
+  public function redirectToGoogle()
+  {
+      return Socialite::driver('google')->redirect();
+  }
+
+  /**
+   * Obtain the user information from GitHub.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function handleGoogleCallback()
+  {
+    // $userg = Socialite::driver('google')->user();
+    $userg = Socialite::driver('google')->stateless()->user();
+      $user = new User;
+      $user->first_name = $userg->user['name']['givenName'];
+      $user->last_name = $userg->user['name']['familyName'];
+      $user->email = $userg->email;
+      // if($userg->user['gender'])
+      // $user->gender = $userg->user['gender'];
+      // else
+      $user->gender='male';
+      $user->password="default";
+      $user->channel="channel1";
+      $user->username=" ";
+      // $interest=['i1' => 1];
+      // $user->interest=serialize($interest);
+      // //$user->save();
+      // //Auth::login($user);
+      $rout=route('social');
+      return redirect($rout)->with(['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
+
+  }
+public function socialup(Request $request){
+
+  $this->validate($request,[
+    'email' => 'required|email|unique:users',
+    'first_name' => 'required|max:120',
+    'last_name' => 'required|max:120',
+    'username'=>'required|unique:users',
+    'password' => 'required|min:4',
+    'confirmpassword'=>'required_with:password|same:password|min:4',
+    'gender' => 'required',
+    'channel' => 'required',
+
+    ]);
+    $user = new User;
+  $password=bcrypt($request['password']);
+  $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
+  // return $request['first_name'];
+  $user->email=$request['email'];
+  $user->password=$password;
+  $user->first_name=$request['first_name'];
+  $user->last_name=$request['last_name'];
+  $user->gender=$request['gender'];
+  $user->channel=$request['channel'];
+  $user->username=$request['username'];
+  $user->interest=serialize($interest);
+  $user->save();
+  Auth::login($user);
+  return redirect()->route('dashboard');
+
+}
+
+public function social(Request $request){
+
+  return view('social',['first'=>$request['first'],'last'=>$request['last'],'email'=>$request['email'],'gender'=>$request['gender']]);
 
 
+
+}
 
 
 

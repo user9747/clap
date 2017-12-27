@@ -113,4 +113,5 @@ class PostController extends Controller{
         return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
     }
 
+   
 }

@@ -1,7 +1,6 @@
 @extends('master')
 
 
-
 @section('title')
 Sign Up
 @endsection
@@ -24,20 +23,20 @@ Sign Up
     @endif
 
 
-                <form action="{{route('postsignup')}}" method="post">
+                <form action="{{route('socialup')}}" method="post">
 
                    <div class="row fields"><div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='first_name' id='first_name' value="{{ Request::old('first_name')}}" placeholder="First name">
+                    <input class='form-control' type='text' name='first_name' id='first_name' value="{{ Session::get('first')}}" placeholder="First name">
                   </div>
                    </div>
                    <div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('user_name') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='username' id='username' value="{{ Request::old('username')}}" placeholder="Username">
+                    <input class='form-control' type='text' name='username' id='username'  placeholder="Username">
                   </div>
 
 
@@ -46,7 +45,7 @@ Sign Up
 
                   <div class='form-group {{$errors -> has('last_name') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='last_name' id='last_name' value="{{ Request::old('last_name')}}" placeholder="Last name">
+                    <input class='form-control' type='text' name='last_name' id='last_name' value="{{ Session::get('last')}}" placeholder="Last name">
                   </div>
 
 
@@ -62,7 +61,7 @@ Sign Up
                  <div class="row fields"><div class="col-md-6 col-xs-12">
                   <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='email' id='email' value="{{ Request::old('email')}}" placeholder="E-mail">
+                    <input class='form-control' type='text' name='email' id='email' value="{{Session::get('email')}}" placeholder="E-mail">
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12">
@@ -81,7 +80,7 @@ Sign Up
                     <option value="channel2">Engineer</option>
                     <option value="channel2">Doctor</option>
                     <option value="channel2">Police</option>
-                    <option value="channel2">Techie</option>
+                    <option value="channel2">Computer Scientist</option>
                   </select>
                   </div>
                 </div>
@@ -96,11 +95,11 @@ Sign Up
                   </div>
 
                 </div></div>
-                  
+
                   <div class="row fields"><div class="col-md-6 col-xs-6">
-                      <label>Interest</label>
+                  <label>Interest</label>
                   <div class='form-group'>
-                      
+
                       <input class="check" type='checkbox' name='i1' >Arts</input>
                       <input class="check" type='checkbox' name='i2' >Science</input>
                       <input class="check" type='checkbox' name='i3' >Tech</input>
@@ -112,48 +111,13 @@ Sign Up
 
 
                 </div></div>
-                  {{--  <div class='form-group'>
-                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" name='channel' type="button" data-toggle="dropdown">
-                    Channels<span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">First</a></li>
-                        <li><a href="#">Second</a></li>
-                      </ul>
-                   </div>
-                  </div>
-                  <div class='form-group'>
-                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" name='gender' data-toggle="dropdown">
-                    Gender<span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Male</a></li>
-                        <li><a href="#">Female</a></li>
-                      </ul>
-                   </div>
-                  </div>
-                  <div class='form-group'>
-                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" name='interest' data-toggle="dropdown">
-                    Interest<span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Interest 1</a></li>
-                        <li><a href="#">Interest 2</a></li>
-                        <li><a href="#">Interest 3</a></li>
-                      </ul>
-                   </div>
-                  </div> //  --}}
                   <div class="wrapper">
                     <button type='submit' class="bton">Sign Up</button><br>
 
                   </div>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>
-              <div class="wrapper">
 
-              
-              <a href="{{route('google')}}">  <button  class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button><a/>
-              </div>
 
 
 

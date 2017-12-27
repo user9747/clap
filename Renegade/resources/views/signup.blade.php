@@ -96,16 +96,11 @@ Sign Up
                   </div>
 
                 </div></div>
-
+                  
                   <div class="row fields"><div class="col-md-6 col-xs-6">
-
+                      <label>Interest</label>
                   <div class='form-group'>
-                <!--  <select name="interest">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>-->
+                      
                       <input class="check" type='checkbox' name='i1' >Arts</input>
                       <input class="check" type='checkbox' name='i2' >Science</input>
                       <input class="check" type='checkbox' name='i3' >Tech</input>

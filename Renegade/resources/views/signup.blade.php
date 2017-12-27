@@ -1,11 +1,15 @@
 @extends('master')
 
+ 
+
 @section('title')
 Sign Up
 @endsection
 
 @section('content')
-    <h3>Sign up.Now.</h3>
+<link rel='stylesheet' href={{URL::to('src/css/signup.css')}}>
+
+    <h3>Sign up. Now.</h3>
 
     @if(count($errors) > 0)
         <div class="row">
@@ -19,11 +23,10 @@ Sign Up
         </div>
     @endif
 
-<div class="row">
-        <div class="col-md-6">
+
                 <form action="{{route('postsignup')}}" method="post">
 
-                   <div class="row"><div class="col-md-6 col-xs-12">
+                   <div class="row fields"><div class="col-md-6 col-xs-12">
 
                    <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
                     
@@ -39,7 +42,7 @@ Sign Up
 
 
                 </div></div>
-                <div class="row"><div class="col-md-6 col-xs-12">
+                <div class="row fields"><div class="col-md-6 col-xs-12">
 
                   <div class='form-group {{$errors -> has('last_name') ? 'has-error' : '' }}'>
                     
@@ -56,7 +59,7 @@ Sign Up
                   </div>
                 </div></div>
 
-                 <div class="row"><div class="col-md-6 col-xs-12">
+                 <div class="row fields"><div class="col-md-6 col-xs-12">
                   <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
                     
                     <input class='form-control' type='text' name='email' id='email' value="{{ Request::old('email')}}" placeholder="E-mail">
@@ -69,7 +72,7 @@ Sign Up
                     <input class='form-control' type='password' name='confirmpassword' id='confirmpassword' placeholder="Confirm password">
                   </div>
                 </div></div>
-                  <div class="row"><div class="col-md-6 col-xs-12">
+                  <div class="row fields"><div class="col-md-6 col-xs-12">
                   
                   <div class='form-group'>
                   <select name="channel">
@@ -90,7 +93,7 @@ Sign Up
 
                 </div></div>
 
-
+                  <div class="row fields"><div class="col-md-6 col-xs-12">
                 
                   <div class='form-group'>
                   <select name="interest">
@@ -99,13 +102,17 @@ Sign Up
                     <option value="3">3</option>
                     <option value="4">4</option>
                   </select>
-                  <input type='checkbox' name='i1' >I1</input>
-                      <input type='checkbox' name='i2' >I2</input>
-                      <input type='checkbox' name='i3' >I3</input>
-                      <input type='checkbox' name='i4' >I4</input>
-                      <input type='checkbox' name='i5' >I5</input>
+                  <input class="check" type='checkbox' name='i1' >I1</input>
+                      <input class="check" type='checkbox' name='i2' >I2</input>
+                      <input class="check" type='checkbox' name='i3' >I3</input>
+                      <input class="check" type='checkbox' name='i4' >I4</input>
+                      <input  class="check" type='checkbox' name='i5' >I5</input>
 
                   </div>
+
+
+
+                </div></div>
                   {{--  <div class='form-group'>
                    <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" name='channel' type="button" data-toggle="dropdown">
@@ -137,12 +144,15 @@ Sign Up
                       </ul>
                    </div>
                   </div> //  --}}
-                    <button type='submit' class='btn btn-primary'>Submit</button>
+                  <div class="wrapper">
+                    <button type='submit' class='btn btn-primary'>Sign Up</button><br>
+                    <button type='submit' class='btn btn-primary'><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button><br>
+                    <button type='submit' class='btn btn-primary'><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button>
+                  </div>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>
 
 
-            </div>
-        </div>
 
 @endsection
+

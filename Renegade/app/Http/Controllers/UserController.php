@@ -154,6 +154,8 @@ class UserController extends Controller{
       $user->first_name = $userfb->name;
       $user->email = $userfb->email;
       $user->save();
+      Auth::login($user);
+      return view('social',['userid'=>$user->id]);
 
   }
 

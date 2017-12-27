@@ -65,13 +65,42 @@ body{
 .wrapper{
     text-align: center;
 }
-.btn {
+.bton{
    
     background-color: black;
     border-width: 0px;
     text-decoration: none;
     margin-bottom: 8px;
     padding:10px;
+    color:white;
+    border-radius: 3px;
+}
+.bton:focus{
+  
+  box-shadow: 0 0 10px black;
+   background-color: white;
+   color:black;
+    outline: none !important;
+    border:none;
+
+
+}
+.form-control:focus {
+    outline: none !important;
+    border:1px solid rgba(0,0,0,0.8);
+    box-shadow: 0 0 10px black;
+}
+ 
+
+ ::-moz-selection {
+       background-color: black;
+       color: white;
+}
+
+/* Works in Safari */
+::selection {
+       background-color: black;
+       color: white;
 }
 @media (max-width: 480px) {
 h3{

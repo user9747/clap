@@ -57,7 +57,7 @@ body{
 }
 h1{
    font-family: 'helveticaneuecondensedbold';
-    font-size: 50px;
+    font-size: 20px;
     color:black;
     margin-bottom: 30px;
 }
@@ -67,7 +67,7 @@ h1{
 }
 @media (max-width: 1200px) {
 h1{
-  font-size: 45px;
+  font-size: 18px;
 }
 .row{
   margin-top:10%;
@@ -81,7 +81,7 @@ h1{
     height:50px;
   }
 h1{
-     font-size: 40px;
+     font-size: 12px;
     
    
 }

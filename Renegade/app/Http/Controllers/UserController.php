@@ -154,6 +154,7 @@ class UserController extends Controller{
       $user->first_name = $userg->user['name']['givenName'];
       $user->last_name = $userg->user['name']['familyName'];
       $user->email = $userg->email;
+      
       $user->gender = $userg->user['gender'];
       $user->password="default";
       $user->channel="channel1";

@@ -97,7 +97,7 @@ Sign Up
                 </div></div>
 
                   <div class="row fields"><div class="col-md-6 col-xs-6">
-
+                  <label>Interest</label>
                   <div class='form-group'>
 
                       <input class="check" type='checkbox' name='i1' >Arts</input>

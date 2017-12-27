@@ -113,7 +113,7 @@ class UserController extends Controller{
     return new Response($file,200);
   }
 
-  public function redirectToProvider()
+  public function redirectToFacebook()
   {
       return Socialite::driver('facebook')->redirect();
   }
@@ -123,11 +123,33 @@ class UserController extends Controller{
    *
    * @return \Illuminate\Http\Response
    */
-  public function handleProviderCallback()
+  public function handleFacebookCallback()
   {
      $userfb = Socialite::driver('facebook')->user();
     //$userfb = Socialite::driver('facebook')->stateless()->user();
       
+      $user = new User;
+      $user->first_name = $userfb->name;
+      $user->email = $userfb->email;
+      $user->save();
+
+  }
+
+  public function redirectToGoogle()
+  {
+      return Socialite::driver('google')->redirect();
+  }
+
+  /**
+   * Obtain the user information from GitHub.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function handleGoogleCallback()
+  {
+     $userfb = Socialite::driver('google')->user();
+    //$userfb = Socialite::driver('facebook')->stateless()->user();
+      return $userfb->name;
       $user = new User;
       $user->first_name = $userfb->name;
       $user->email = $userfb->email;

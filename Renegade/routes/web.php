@@ -31,11 +31,11 @@
         'as' =>'postsignin'
     ]);
 
-    Route::get('login/facebook',['uses' => 'UserController@redirectToProvider','as' => 'facebook']);
-    Route::get('login/facebook/callback', 'UserController@handleProviderCallback');
+    Route::get('login/facebook',['uses' => 'UserController@redirectToFacebook','as' => 'facebook']);
+    Route::get('login/facebook/callback', 'UserController@handleFacebookCallback');
 
-    Route::get('login/google',['uses' => 'UserController@redirectToProvider','as' => 'google']);
-    Route::get('login/google/callback', 'UserController@handleProviderCallback');
+    Route::get('login/google',['uses' => 'UserController@redirectToGoogle','as' => 'google']);
+    Route::get('login/google/callback', 'UserController@handleGoogleCallback');
 
     Route::get('logout',[
         'uses' => 'UserController@getLogout',
@@ -83,7 +83,14 @@
     'as'=>'like',
 
     ]);
+<<<<<<< HEAD
  Route::get('/socmediasignup',[
      'uses'=>'PostController@socmediasignup',
      'as'=>'socmediasignup'
  ]);  
+=======
+ Route::get('/fbsignup',[
+     'uses'=>'PostController@fbsignup',
+     'as'=>'fbsignup'
+ ]);
+>>>>>>> fed6af51c0404c66af4306ecdd62388c8f854d49

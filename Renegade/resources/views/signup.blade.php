@@ -26,14 +26,14 @@ Sign Up
 
                 <form action="{{route('postsignup')}}" method="post">
 
-                   <div class="row fields"><div class="col-md-6 col-xs-12">
+                   <div class="row fields"><div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
                     
                     <input class='form-control' type='text' name='first_name' id='first_name' value="{{ Request::old('first_name')}}" placeholder="First name">
                   </div>
                    </div>
-                   <div class="col-md-6 col-xs-12">
+                   <div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('user_name') ? 'has-error' : '' }}'>
                     
@@ -42,7 +42,7 @@ Sign Up
 
 
                 </div></div>
-                <div class="row fields"><div class="col-md-6 col-xs-12">
+                <div class="row fields"><div class="col-md-6 col-xs-6">
 
                   <div class='form-group {{$errors -> has('last_name') ? 'has-error' : '' }}'>
                     
@@ -51,7 +51,7 @@ Sign Up
 
 
                 </div>
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-6 col-xs-6">
 
                   <div class='form-group'>
                    
@@ -81,7 +81,7 @@ Sign Up
                   </select>
                   </div>
                 </div>
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-6 col-xs-6">
 
                   <div class='form-group'>
 
@@ -93,7 +93,7 @@ Sign Up
 
                 </div></div>
 
-                  <div class="row fields"><div class="col-md-6 col-xs-12">
+                  <div class="row fields"><div class="col-md-6 col-xs-6">
                 
                   <div class='form-group'>
                 <!--  <select name="interest">

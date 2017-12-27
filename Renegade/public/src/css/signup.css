@@ -112,6 +112,12 @@ h3{
 body{
     background-position:50% 0%;
 }
+.fields{
+  padding-left: 5%;
+  padding-right: 5%; 
+  margin-left: 0px;
+  margin-right: 0px;
+}
 }
 @media (max-width: 380px) {
 .bton{

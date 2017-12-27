@@ -114,7 +114,7 @@ class PostController extends Controller{
     }
 
     public function fbsignup(Request $request){
-        $user=
+    
         return view('fbsignup'); 
 
 

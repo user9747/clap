@@ -29,7 +29,7 @@ class UserController extends Controller{
           'confirmpassword'=>'required_with:password|same:password|min:4',
           'gender' => 'required',
           'channel' => 'required',
-      
+
           ]);
         $password=bcrypt($request['password']);
         $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
@@ -179,7 +179,7 @@ public function socialup(Request $request){
     'confirmpassword'=>'required_with:password|same:password|min:4',
     'gender' => 'required',
     'channel' => 'required',
-  
+
     ]);
     $user = new User;
   $password=bcrypt($request['password']);

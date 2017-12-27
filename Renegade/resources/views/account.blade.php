@@ -34,7 +34,9 @@ Account
 
 
     <section class="row new-post">
-        <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-3"><div class="left"><h5>{{ $user->first_name }}&nbsp{{ $user->last_name }}</h5>
+        <h6>@<span>{{ $user->username }}</span></h6></div></div>
+        <div class="col-md-9">
             <header><h3>Your Account</h3></header>
             <form action="{{ route('account.save') }}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
@@ -56,12 +58,12 @@ Account
                 <button type="submit" class="bton">Save Account</button>
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
             </form>
-        </div>
-    </section>
+        <!--</div>
+    </section>-->
     @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
-        <section class="row new-post">
-            <div class="col-md-6 col-md-offset-3">
-                <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="" class="img-responsive">
+        <!--<section class="row new-post">
+            <div class="col-md-6 col-md-offset-3">-->
+                <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="" class="img-responsive" style="height:200px;">
             </div>
         </section>
     @endif

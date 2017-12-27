@@ -1,9 +1,12 @@
 @extends('master')
-<link rel='stylesheet' href={{URL::to('src/css/dashboard.css')}}>
+
+
 @section('title')
 Dashboard
 @endsection
 @include('postvalidate')
+@section('content')
+<link rel='stylesheet' href={{URL::to('src/css/dashboard.css')}}>
 <div id='error' class='error'>
 </div>
 <div id='success' class='success'>
@@ -36,13 +39,13 @@ Dashboard
 </nav>
 </header>
 <div class='row newpost'>
-    <div class='col-md-6 col-xs-12'></div>
-    <div class='col-md-6 col-xs-12'>
+    <div class='col-md-3 container-fluid eq_height '><div class="left"><h5>Your Feed</h5></div></div>
+    <div class='col-md-9 container-fluid eq_height'>
         <section class='newpost'>
-             <header><h3>What do you have to say?</h3></header>
+             
 
                  <div class='form-group'>
-                      <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
+                      <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='What do you have to say?'></textarea>
                  </div>
                 <button type='submit' class='bton' id='postit'>Post</button>
 
@@ -50,29 +53,35 @@ Dashboard
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
             
 
-         </section><hr>
-     </div></div>
+         </section>
+     <!--</div></div>
 
 
          <div name='posts' class='row post'>
-            <div class='col-md-6 col-xs-12'></div>
-            <div class='col-md-6 col-xs-12'>
-                <header><h3>What do others have to say?</h3></header>
+            <div class='col-md-3'></div>
+            <div class='col-md-9'>-->
+               
 
                             @foreach($posts as $post)
                                                          @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
+                         
+                        
                          <article data-postid='{{$post->id}}'>
-                        <p>{{$post->body}}</p>
-                        <div class='info'>
-                             Posted by user {{$post->user['username']}} on {{$post->created_at}}
+                             @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
+                             <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="User" class="img-responsive" style="height:40px;">
+                             @endif
+                          <div class='info'>
+                             {{$post->user['username']}}<br></div><div class="details">{{$post->created_at}}
                      </div>
+                        <p class="postcont">{{$post->body}}</p>
+                      
                      <div class='interaction'>
                     <p>
 
-                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>|
+                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
                     @if(Auth::user() == $post->user)
-                    |<a href='#' class='editpost'>Edit</a>|
+                    &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                   @endif
                      </p>
@@ -87,22 +96,25 @@ Dashboard
               @if((($userinterest['i1']== 1)&&($tag['t1'] == "true"))||(($userinterest['i2']== 1)&&($tag['t2'] == "true"))||(($userinterest['i3']== 1)&&($tag['t3'] == "true"))
               ||(($userinterest['i4']== 1)&&($tag['t4'] == "true"))||(($userinterest['i5']== 1)&&($tag['t5'] == "true")))
                <article data-postid='{{$post->id}}'>
-                    <p>{{$post->body }}</p>
-
-
-            <div class='info'>
-                Posted by user {{$post->user['username']}} on {{$post->created_at}}
+                 <div class='info'>
+                 {{$post->user['username']}} <br></div><div class="details">{{$post->created_at}}
             </div>
+
+                    <p class="postcont">{{$post->body }}</p>
+
+
+
+           
             <div class='interaction'>
             <p>
 
-                <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>|
+                <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
                 @if(Auth::user() == $post->user)
-                |<a href='#' class='editpost'>Edit</a>|
+                &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                 @endif
-            </p><hr>
+            </p>
             </div>
           </article>
               @endif
@@ -115,8 +127,8 @@ Dashboard
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Edit Post</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title">Edit Post</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -126,8 +138,8 @@ Dashboard
                 </textarea>
               </div>
               <div class="modal-footer">
-                <button type="button" class="bton" id='modal-save'>Save changes</button>
-                <button type="button" class="bton1" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary bton" id='modal-save'>Save changes</button>
+                <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -150,8 +162,8 @@ Dashboard
                 <input type='checkbox' id='t5' value='t5'>T5</input>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id='tagsave'>Save </button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary bton" id='tagsave'>Save </button>
+                <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -166,3 +178,4 @@ Dashboard
       var createpost='{{route('createpost')}}';
       </script>
 </div>
+@endsection

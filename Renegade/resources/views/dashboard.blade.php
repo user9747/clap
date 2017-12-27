@@ -43,7 +43,7 @@ Dashboard
             <div class='form-group'>
                 <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
             </div>
-                <button type='submit' class='btn btn-primary' id='postit'>Post</button>
+                <button type='submit' class='bton' id='postit'>Post</button>
 
 
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
@@ -51,9 +51,9 @@ Dashboard
 
         </section>
 
-        <div name='posts'class='row post'>
+        <div name='posts' class='row post'>
             <div class='col-md-6'>
-            <header><h3>What others have to say?</h3></header>
+            <header><h3>What do others have to say?</h3></header>
 
               @foreach($posts as $post)
                 @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))

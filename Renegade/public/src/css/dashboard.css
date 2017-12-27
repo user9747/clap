@@ -37,6 +37,8 @@ body{
     padding:10px;
     color:white;
     border-radius: 3px;
+     padding-left: 20px;
+    padding-right: 20px;
 }
 .bton:focus{
   
@@ -70,5 +72,17 @@ body{
        background-color: black;
        color: white;
 }
+h3{
+ font-family: 'helveticaneuecondensedbold';
+}
+
+.navbar-default {
+    background-color: white;
+    
+   border-radius: 0px;
+    box-shadow: 0 0 10px black;
+}
+
+
     
   

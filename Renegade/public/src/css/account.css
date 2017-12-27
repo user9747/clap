@@ -5,6 +5,8 @@
     text-decoration: none;
     margin-bottom: 8px;
     padding:10px;
+    padding-left: 20px;
+    padding-right: 20px;
     color:white;
     border-radius: 3px;
 }
@@ -41,13 +43,12 @@
        color: white;
 }
 h3{
- font-family: 'helveticaneuecondensedbold';}
+ font-family: 'helveticaneuecondensedbold';
 }
 
 .navbar-default {
     background-color: white;
-    border-width: 1px;
-    border-color: black;
+    border-radius: 0px;
     box-shadow: 0 0 10px black;
 }
 

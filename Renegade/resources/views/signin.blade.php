@@ -43,4 +43,29 @@ Sign In
             </div>
         </div>
 
+
+       <!-- <script type="text/javascript">
+      /*$(window).scroll(function() {
+    if ($(this).scrollTop() > 1000) { // this refers to window
+        alert('blah');
+    }
+});*/
+
+
+
+       var $win = $(window);
+    var winH = $win.height()/2;   // Get the window height.
+
+    $win.on("scroll", function () {
+        if ($(this).scrollTop() > winH ) {
+            $('body').addClass("bg");
+        } else {
+            $('body').removeClass("bg");
+        }
+    }).on("resize", function(){ // If the user resizes the window
+       winH = $(this).height()/2; // you'll need the new height value
+    });
+
+    </script>-->
+
 @endsection

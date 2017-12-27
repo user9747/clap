@@ -149,13 +149,14 @@ class UserController extends Controller{
   {
     // $userg = Socialite::driver('google')->user();
     $userg = Socialite::driver('google')->stateless()->user();
-
       $user = new User;
       $user->first_name = $userg->user['name']['givenName'];
       $user->last_name = $userg->user['name']['familyName'];
       $user->email = $userg->email;
-      
-      $user->gender = $userg->user['gender'];
+      // if($userg->user['gender'])
+      // $user->gender = $userg->user['gender'];
+      // else
+      $user->gender='male';
       $user->password="default";
       $user->channel="channel1";
       $user->username=" ";
@@ -167,7 +168,7 @@ class UserController extends Controller{
 
   }
 public function socialup(Request $request){
-  $user=new User;
+  
   $this->validate($request,[
     'email' => 'required|email|unique:users',
     'first_name' => 'required|max:120',
@@ -177,8 +178,9 @@ public function socialup(Request $request){
     'confirmpassword'=>'required_with:password|same:password|min:4',
     'gender' => 'required',
     'channel' => 'required',
-    'interest'
+    'interest'=>'required'
     ]);
+    $user = Auth::user();
   $password=bcrypt($request['password']);
   $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
   $user=new User();
@@ -190,7 +192,6 @@ public function socialup(Request $request){
   $user->channel=$request['channel'];
   $user->username=$request['username'];
   $user->interest=serialize($interest);
-
   $user->update();
   Auth::login($user);
   return redirect()->route('dashboard');

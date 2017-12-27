@@ -99,7 +99,7 @@ Sign Up
                   <div class="row fields"><div class="col-md-6 col-xs-6">
 
                   <div class='form-group'>
-            
+
                   <input class="check" type='checkbox' name='i1' >I1</input>
                       <input class="check" type='checkbox' name='i2' >I2</input>
                       <input class="check" type='checkbox' name='i3' >I3</input>
@@ -117,7 +117,7 @@ Sign Up
                   </div>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>
-             
+
 
 
 

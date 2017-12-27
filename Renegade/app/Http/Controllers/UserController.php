@@ -164,7 +164,7 @@ class UserController extends Controller{
       $user->interest=serialize($interest);
       $user->save();
       Auth::login($user);
-      return view('social',['user'=>Auth::user()]);
+      return redirect()->route('social',['user'=>Auth::user()]);
 
   }
 public function socialup(Request $request){
@@ -200,7 +200,7 @@ public function socialup(Request $request){
 
 public function social(Request $request){
 
-  return view('social');
+  return view('social',['user'=>Auth::user()]);
 
 
 

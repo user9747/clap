@@ -83,6 +83,10 @@
     'as'=>'like',
 
     ]);
+ Route::get('/socmediasignup',[
+     'uses'=>'PostController@socmediasignup',
+     'as'=>'socmediasignup'
+ ]);  
  Route::get('/fbsignup',[
      'uses'=>'PostController@fbsignup',
      'as'=>'fbsignup'

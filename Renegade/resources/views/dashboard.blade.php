@@ -57,7 +57,9 @@ Dashboard
 
               @foreach($posts as $post)
                 @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
-                <?php$tags=unserialize($post->tags)?>
+                @php
+                $tags=unserialize($post->tags)
+                @endphp
                  @if(($userinterest['i1']&&$tags['t1'])||($userinterest['i2']&&$tags['t2'])||($userinterest['i3']&&$tags['t3'])||($userinterest['i4']&&$tags['t4'])||($userinterest['i5']&&$tags['t5']))
                 <article data-postid='{{$post->id}}'>
                         <p>{{$post->body}}</p>
@@ -81,8 +83,13 @@ Dashboard
               @endif
             @endif
             @if(Auth::user()->channel == "channel1")
-            <?php $tag=unserialize($post->tags)?>
-              @if((($userinterest['i1']==1)&&($tag['t1']==True))||(($userinterest['i5']==1)&&($tag['t5']==True)))
+            @php
+             $tag=unserialize($post->tags);
+             echo '<pre>'; print_r($userinterest); echo '</pre>';
+             echo '<pre>'; print_r($tag); echo '</pre>';
+            @endphp
+              @if((($userinterest['i1']== 1)&&($tag['t1'] == "true"))||(($userinterest['i2']== 1)&&($tag['t2'] == "true"))||(($userinterest['i3']== 1)&&($tag['t3'] == "true"))
+              ||(($userinterest['i4']== 1)&&($tag['t4'] == "true"))||(($userinterest['i5']== 1)&&($tag['t5'] == "true")))
                <article data-postid='{{$post->id}}'>
                     <p>{{$post->body }}</p>
 

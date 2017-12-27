@@ -156,6 +156,8 @@ class UserController extends Controller{
       $user->email = $userg->email;
       $user->gender = $userg->user['gender'];
       $user->save();
+      Auth::login($user);
+      return view('social',['userid'=>$user->id]);
 
   }
 

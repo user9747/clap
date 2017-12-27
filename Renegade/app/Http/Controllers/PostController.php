@@ -113,9 +113,9 @@ class PostController extends Controller{
         return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
     }
 
-    public function socmediasignup(Request $request){
+    public function social(Request $request){
     
-        return view('fbsignup'); 
+        return view('social'); 
 
 
 

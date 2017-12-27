@@ -143,11 +143,11 @@ Dashboard
               </div>
               <div class="modal-body">
               <label>Add tags</label>
-                <input type='checkbox' id='t1' value='t1'>T1</input>
-                <input type='checkbox' id='t2' value='t2'>T2</input>
-                <input type='checkbox' id='t3' value='t3'>T3</input>
-                <input type='checkbox' id='t4' value='t4'>T4</input>
-                <input type='checkbox' id='t5' value='t5'>T5</input>
+                <input type='checkbox' id='t1' value='t1'>Arts</input>
+                <input type='checkbox' id='t2' value='t2'>Science</input>
+                <input type='checkbox' id='t3' value='t3'>Tech</input>
+                <input type='checkbox' id='t4' value='t4'>Music</input>
+                <input type='checkbox' id='t5' value='t5'>Business</input>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id='tagsave'>Save </button>

@@ -106,11 +106,11 @@ Sign Up
                     <option value="3">3</option>
                     <option value="4">4</option>
                   </select>-->
-                  <input class="check" type='checkbox' name='i1' >I1</input>
-                      <input class="check" type='checkbox' name='i2' >I2</input>
-                      <input class="check" type='checkbox' name='i3' >I3</input>
-                      <input class="check" type='checkbox' name='i4' >I4</input>
-                      <input  class="check" type='checkbox' name='i5' >I5</input>
+                      <input class="check" type='checkbox' name='i1' >Arts</input>
+                      <input class="check" type='checkbox' name='i2' >Science</input>
+                      <input class="check" type='checkbox' name='i3' >Tech</input>
+                      <input class="check" type='checkbox' name='i4' >Music</input>
+                      <input class="check" type='checkbox' name='i5' >Business</input>
 
                   </div>
 

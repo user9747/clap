@@ -162,9 +162,9 @@ class UserController extends Controller{
       $user->username=" ";
       $interest=['i1' => 1];
       $user->interest=serialize($interest);
-      $user->save();
-      Auth::login($user);
-      return redirect()->route('social',['user'=>Auth::user()]);
+      //$user->save();
+      //Auth::login($user);
+      return redirect()->route('social',['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
 
   }
 public function socialup(Request $request){
@@ -180,10 +180,10 @@ public function socialup(Request $request){
     'channel' => 'required',
   
     ]);
-    $user = Auth::user();
+    $user = new User;
   $password=bcrypt($request['password']);
   $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
-
+  // return $request['first_name'];
   $user->email=$request['email'];
   $user->password=$password;
   $user->first_name=$request['first_name'];
@@ -192,7 +192,7 @@ public function socialup(Request $request){
   $user->channel=$request['channel'];
   $user->username=$request['username'];
   $user->interest=serialize($interest);
-  $user->update();
+  $user->save();
   Auth::login($user);
   return redirect()->route('dashboard');
 
@@ -200,7 +200,7 @@ public function socialup(Request $request){
 
 public function social(Request $request){
 
-  return view('social',['user'=>Auth::user()]);
+  return view('social',['first'=>$request['first'],'last'=>$request['last'],'email'=>$request['email'],'gender'=>$request['gender']]);
 
 
 

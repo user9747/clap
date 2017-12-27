@@ -162,7 +162,7 @@ class UserController extends Controller{
       
       $user->save();
       Auth::login($user);
-      return view('social');
+      return view('social',['user'=>Auth::user()]);
 
   }
 public function socialup(Request $request){

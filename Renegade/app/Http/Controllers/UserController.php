@@ -149,12 +149,16 @@ class UserController extends Controller{
   {
     // $userg = Socialite::driver('google')->user();
     $userg = Socialite::driver('google')->stateless()->user();
-      return $userg->email;
+
       $user = new User;
       $user->first_name = $userg->user['name']['givenName'];
       $user->last_name = $userg->user['name']['familyName'];
       $user->email = $userg->email;
       $user->gender = $userg->user['gender'];
+      $user->password="default";
+      $user->channel="channel1";
+      $user->username=" ";
+      $interest=['i1' => 1];
       $user->save();
       Auth::login($user);
       return view('social',['userid'=>$user->id]);
@@ -192,8 +196,8 @@ public function socialup(Request $request){
 }
 
 public function social(Request $request){
-    
-  return view('social'); 
+
+  return view('social');
 
 
 

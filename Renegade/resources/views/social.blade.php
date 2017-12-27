@@ -23,7 +23,7 @@ Sign Up
     @endif
 
 
-                <form action="{{route('postsignup')}}" method="post">
+                <form action="{{route('socialup')}}" method="post">
 
                    <div class="row fields"><div class="col-md-6 col-xs-6">
 

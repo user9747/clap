@@ -4,7 +4,7 @@ var msg=null;
 
 $('.post').find('.interaction').find('.editpost').on('click',function(event){
     event.preventDefault();
-    postBody=event.target.parentNode.parentNode.parentNode.childNodes[1]
+    postBody=event.target.parentNode.parentNode.parentNode.childNodes[1];
     var post=postBody.textContent;
     postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
     $('#editform').val(post);

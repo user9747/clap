@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Socialite;
 
 class UserController extends Controller{
 
@@ -52,7 +53,7 @@ class UserController extends Controller{
       if($interest=='on')
         return 1;
       else
-        return 0;  
+        return 0;
     }
     public function SignIn(Request $request)
     {
@@ -111,5 +112,29 @@ class UserController extends Controller{
     $file = Storage::disk('local')->get($filename);
     return new Response($file,200);
   }
+
+  public function redirectToProvider()
+  {
+      return Socialite::driver('facebook')->redirect();
+  }
+
+  /**
+   * Obtain the user information from GitHub.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function handleProviderCallback()
+  {
+    // $user = Socialite::driver('facebook')->user();
+    $user = Socialite::driver('facebook')->stateless()->user();
+
+      return  $user->name;
+  }
+
+
+
+
+
+
 
 }

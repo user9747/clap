@@ -159,6 +159,7 @@ class UserController extends Controller{
       $user->channel="channel1";
       $user->username=" ";
       $interest=['i1' => 1];
+      $user->interest=serialize($interest);
       $user->save();
       Auth::login($user);
       return view('social',['userid'=>$user->id]);

@@ -1,13 +1,4 @@
 @extends('master')
-<!--
-@php
-$connection = mysql_connect('localhost','user','secret') or die ("Couldn't connect to server."); 
-$db = mysql_select_db('renegade', $connection) or die ("Couldn't select database."); 
-$data = 'SELECT * FROM `table_name` WHERE `ID` = "'.$userid.'"';
-$query = mysql_query($data) or die("Couldn't execute query. ". mysql_error());
-$data2 = mysql_fetch_array($query);
-@endphp
--->
 
 @section('title')
 Sign Up
@@ -107,7 +98,7 @@ Sign Up
                   <div class="row fields"><div class="col-md-6 col-xs-6">
 
                   <div class='form-group'>
-            
+
                   <input class="check" type='checkbox' name='i1' >I1</input>
                       <input class="check" type='checkbox' name='i2' >I2</input>
                       <input class="check" type='checkbox' name='i3' >I3</input>
@@ -125,7 +116,7 @@ Sign Up
                   </div>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>
-             
+
 
 
 

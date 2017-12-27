@@ -1,6 +1,13 @@
 @extends('master')
-
-
+<!--
+@php
+$connection = mysql_connect('localhost','user','secret') or die ("Couldn't connect to server."); 
+$db = mysql_select_db('renegade', $connection) or die ("Couldn't select database."); 
+$data = 'SELECT * FROM `table_name` WHERE `ID` = "'.$userid.'"';
+$query = mysql_query($data) or die("Couldn't execute query. ". mysql_error());
+$data2 = mysql_fetch_array($query);
+@endphp
+-->
 
 @section('title')
 Sign Up

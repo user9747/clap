@@ -29,14 +29,14 @@ Sign Up
 
                    <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='first_name' id='first_name' value="{{ $user->first_name}}" placeholder="First name">
+                    <input class='form-control' type='text' name='first_name' id='first_name' value="{{ $first}}" placeholder="First name">
                   </div>
                    </div>
                    <div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('user_name') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='username' id='username' value="{{ $user->user_name}}" placeholder="Username">
+                    <input class='form-control' type='text' name='username' id='username'  placeholder="Username">
                   </div>
 
 
@@ -45,7 +45,7 @@ Sign Up
 
                   <div class='form-group {{$errors -> has('last_name') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='last_name' id='last_name' value="{{ $user->last_name}}" placeholder="Last name">
+                    <input class='form-control' type='text' name='last_name' id='last_name' value="{{ $last}}" placeholder="Last name">
                   </div>
 
 
@@ -61,7 +61,7 @@ Sign Up
                  <div class="row fields"><div class="col-md-6 col-xs-12">
                   <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
 
-                    <input class='form-control' type='text' name='email' id='email' value="{{ $user->email}}" placeholder="E-mail">
+                    <input class='form-control' type='text' name='email' id='email' value="{{$email}}" placeholder="E-mail">
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12">

@@ -29,6 +29,7 @@ class UserController extends Controller{
           'confirmpassword'=>'required_with:password|same:password|min:4',
           'gender' => 'required',
           'channel' => 'required',
+          'interest'
           ]);
         $password=bcrypt($request['password']);
         $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
@@ -58,13 +59,13 @@ class UserController extends Controller{
     {
 
       $this->validate($request,[
-      	'email' => 'required',
+      	'username' => 'required',
       	'password' => 'required',
 
       	]);
 
 
-	    if (Auth::attempt(['email'=> $request['email'],'password'=> $request['password']])){
+	    if (Auth::attempt(['username'=> $request['username'],'password'=> $request['password']])){
 
 		    return redirect()->route('dashboard');
 

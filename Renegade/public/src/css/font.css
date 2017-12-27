@@ -9,7 +9,7 @@
 }
 @font-face {
 	font-family: 'helveticaneuecondensedbold';
-	src: url('../fonts/HelveticaNeue-condensedBold.otf');
+	src: url('../fonts/HelveticaNeue-CondensedBold.otf');
 	/*src: local('33535gillsansmt'), url('../fonts/33535gillsansmt.woff') format('woff'), url('../fonts/33535gillsansmt.ttf') format('truetype');*/
 }
 /* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_1416">Text with this font applied</p> */

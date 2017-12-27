@@ -147,8 +147,8 @@ class UserController extends Controller{
    */
   public function handleGoogleCallback()
   {
-     $userfb = Socialite::driver('google')->user();
-    //$userfb = Socialite::driver('facebook')->stateless()->user();
+    // $userfb = Socialite::driver('google')->user();
+    $userfb = Socialite::driver('google')->stateless()->user();
       return $userfb->name;
       $user = new User;
       $user->first_name = $userfb->name;

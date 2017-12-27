@@ -154,13 +154,13 @@ Sign Up
                       </ul>
                    </div>
                   </div> //  --}}
-                  <div class="wrapper">
+                 
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
+              </form>
+              <div class="wrapper">
                     <button type='submit' class="bton">Sign Up</button><br>
 
                   </div>
-                <input type='hidden' name='_token' value='{{Session::token()}}'>
-              </form>
-              
 
 
 @endsection

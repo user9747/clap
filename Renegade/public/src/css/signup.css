@@ -38,6 +38,7 @@ body{
     background-image: url('../img/sign2.png');
     background-repeat: no-repeat;
     background-position:50% 40%;
+    background-attachment: fixed;
 
 
 }
@@ -109,7 +110,7 @@ h3{
     margin-bottom: 20px;
 }
 body{
-    background-position:50% 6%;
+    background-position:50% 0%;
 }
 }
 @media (max-width: 380px) {

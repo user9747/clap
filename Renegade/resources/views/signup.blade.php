@@ -156,7 +156,7 @@ Sign Up
               </form>
               <div class="wrapper">
 
-              <a href="{{route('facebook')}}">  <button  class="bton"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button></a><br>
+              
               <a href="{{route('google')}}">  <button  class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button><a/>
               </div>
 

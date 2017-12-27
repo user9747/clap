@@ -183,7 +183,6 @@ public function socialup(Request $request){
     $user = Auth::user();
   $password=bcrypt($request['password']);
   $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
-  $user=new User();
   $user->email=$request['email'];
   $user->password=$password;
   $user->first_name=$request['first_name'];

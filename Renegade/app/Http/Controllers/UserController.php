@@ -127,7 +127,7 @@ class UserController extends Controller{
   {
      $userfb = Socialite::driver('facebook')->user();
     //$userfb = Socialite::driver('facebook')->stateless()->user();
-      
+
       $user = new User;
       $user->first_name = $userfb->name;
       $user->email = $userfb->email;
@@ -147,12 +147,14 @@ class UserController extends Controller{
    */
   public function handleGoogleCallback()
   {
-    // $userfb = Socialite::driver('google')->user();
-    $userfb = Socialite::driver('google')->stateless()->user();
-      return $userfb->name;
+    // $userg = Socialite::driver('google')->user();
+    $userg = Socialite::driver('google')->stateless()->user();
+      return $userg->email;
       $user = new User;
-      $user->first_name = $userfb->name;
-      $user->email = $userfb->email;
+      $user->first_name = $userg->user['name']['givenName'];
+      $user->last_name = $userg->user['name']['familyName'];
+      $user->email = $userg->email;
+      $user->gender = $userg->user['gender'];
       $user->save();
 
   }

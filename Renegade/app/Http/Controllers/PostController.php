@@ -113,4 +113,11 @@ class PostController extends Controller{
         return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
     }
 
+    public function fbsignup(Request $request){
+        $user=
+        return view('fbsignup'); 
+
+
+
+    }
 }

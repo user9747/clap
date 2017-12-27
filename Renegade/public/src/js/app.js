@@ -65,7 +65,7 @@ $('#tagsave').on('click',function(event){
 
     })
     .done(function(msg){
-        //console.log(msg['body']);
+       
         $('#tagmodal').modal('hide');
         if(msg['message']=='Post successfully created'){
         location.reload(true);
@@ -74,13 +74,8 @@ $('#tagsave').on('click',function(event){
         else
         document.getElementById('error').innerHTML=msg['message'];
         
-        // $.ajax({
-        //     method:'GET',
-        //     url:dashboard
-        //     })
-        // .done(function(){
-        //     console.log('Success');
-        // })    
+        
     });
 
 });
+

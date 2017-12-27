@@ -127,7 +127,7 @@ class UserController extends Controller{
   {
      $userfb = Socialite::driver('facebook')->user();
     //$userfb = Socialite::driver('facebook')->stateless()->user();
-
+      
       $user = new User;
       $user->first_name = $userfb->name;
       $user->email = $userfb->email;

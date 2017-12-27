@@ -5,6 +5,7 @@ Account
 @endsection
 
 @section('content')
+<link rel='stylesheet' href={{URL::to('src/css/account.css')}}>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,7 +53,7 @@ Account
                     <label for="image">Image (only .jpg)</label>
                     <input type="file" name="image" class="form-control" id="image">
                 </div>
-                <button type="submit" class="btn btn-primary">Save Account</button>
+                <button type="submit" class="bton">Save Account</button>
                 <input type="hidden" value="{{ Session::token() }}" name="_token">
             </form>
         </div>

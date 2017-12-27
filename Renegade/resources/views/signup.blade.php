@@ -19,7 +19,7 @@ Sign Up
         </div>
     @endif
 
-
+<div class="row">
         <div class="col-md-6">
                 <form action="{{route('postsignup')}}" method="post">
 
@@ -85,9 +85,9 @@ Sign Up
                   <select name="gender">
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
-                    <option value="Albino">Albino</option>
                   </select>
                   </div>
+
                 </div></div>
 
 
@@ -99,6 +99,12 @@ Sign Up
                     <option value="3">3</option>
                     <option value="4">4</option>
                   </select>
+                  <input type='checkbox' name='i1' >I1</input>
+                      <input type='checkbox' name='i2' >I2</input>
+                      <input type='checkbox' name='i3' >I3</input>
+                      <input type='checkbox' name='i4' >I4</input>
+                      <input type='checkbox' name='i5' >I5</input>
+
                   </div>
                   {{--  <div class='form-group'>
                    <div class="dropdown">

@@ -14,7 +14,7 @@
 .success{
     color:green;
     background-color: rgb(156, 204, 156);
-    text-align:right;
+    text-align:center;
 
 }
 .error{
@@ -22,6 +22,7 @@
     padding: 0 px;
     margin: 0 px;
     background-color: rgb(172, 110, 110);
+
     text-align: right;
 }
 /*body{
@@ -36,3 +37,4 @@ header{
     border-radius: 0px;
     margin: 0px;
 }*/
+    

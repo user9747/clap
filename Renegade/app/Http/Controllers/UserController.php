@@ -26,7 +26,6 @@ class UserController extends Controller{
           'password' => 'required|min:4',
           'gender' => 'required',
           'channel' => 'required',
-          'interest' => 'required'
           ]);
         $email=$request['email'];
         $password=bcrypt($request['password']);
@@ -34,7 +33,7 @@ class UserController extends Controller{
         $last_name=$request['last_name'];
         $gender=$request['gender'];
         $channel=$request['channel'];
-        $interest=$request['interest'];
+        $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
 
         $user=new User();
         $user->email=$email;
@@ -43,14 +42,19 @@ class UserController extends Controller{
         $user->last_name=$last_name;
         $user->gender=$gender;
         $user->channel=$channel;
-        $user->interest=$interest;
+        $user->interest=serialize($interest);
 
         $user->save();
         Auth::login($user);
         return redirect()->route('dashboard');
 
     }
-
+    public function isOn($interest){
+      if($interest=='on')
+        return 1;
+      else
+        return 0;  
+    }
     public function SignIn(Request $request)
     {
 
@@ -86,12 +90,15 @@ class UserController extends Controller{
   {
     $this ->validate($request,[
       'first_name' => 'required|max:120',
+      'last_name' => 'required|max:120',
     ]);
 
     $user = Auth::user();
     $user->first_name = $request['first_name'];
+    $user->last_name = $request['last_name'];
     $file = $request->file('image');
     $filename = $request['first_name'] . '-' .$user->id . '.jpg';
+    $user->save();
     if($file)
     {
       Storage::disk('local')->put($filename,File::get($file));

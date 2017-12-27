@@ -65,8 +65,20 @@ $('#tagsave').on('click',function(event){
 
     })
     .done(function(msg){
-        console.log(msg['tagid']);
+        //console.log(msg['body']);
         $('#tagmodal').modal('hide');
+        if(msg['message']=='Post successfully created')
+        document.getElementById('success').innerHTML=msg['message'];
+        else
+        document.getElementById('error').innerHTML=msg['message'];
+        location.reload(true);
+        // $.ajax({
+        //     method:'GET',
+        //     url:dashboard
+        //     })
+        // .done(function(){
+        //     console.log('Success');
+        // })    
     });
 
 });

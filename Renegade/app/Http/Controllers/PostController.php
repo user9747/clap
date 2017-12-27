@@ -13,32 +13,34 @@ class PostController extends Controller{
 
     public function getDashboard(){
         $posts=Post::orderBy('created_at','desc')->get();
+        $userinterest=unserialize(Auth::user()->interest);
         $likecount[0]=0;
         if($posts)
         foreach($posts as $post){
             $likecount[$post->id]=$this->likecount($post->id);
         }
-        return view('dashboard',['posts'=>$posts,'likecount'=>$likecount]);
+        return view('dashboard',['posts'=>$posts,'likecount'=>$likecount,'userinterest'=>$userinterest]);
 
         }
 
     public function createPost(Request $request){
         $post=new Post();
-        $tagid=new Tag();
         $passedtag=['t1'=>$request['t1'],'t2'=>$request['t2'],'t3'=>$request['t3'],'t4'=>$request['t4'],'t5'=>$request['t5']];
-        $tagid->tags=serialize($passedtag);
-        $tagid->save();
+        $tags=serialize($passedtag);
+        $message='Body field required';
+        if($request['body']){
+        $post->body=$request['body'];
+        $post->tags=$tags;
         $this->validate($request,[
             'body'=>'required|max:1000'
         ]);
-        $post->body=$request['body'];
-        $post->tagid=$tagid->id;
-        $message='There was an error';
         if($request->user()->posts()->save($post)){
-            $message='Post successfully created';
+           $message='Post successfully created';
         }
-        return redirect()->route('dashboard')->with(['message'=>$message]);
+    }
 
+        return response()->json(['message'=>$message,'body'=>$request['body']], 200);
+          
     }
 
     public function getDeletePost($post_id)

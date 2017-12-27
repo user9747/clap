@@ -164,7 +164,8 @@ class UserController extends Controller{
       // $user->interest=serialize($interest);
       // //$user->save();
       // //Auth::login($user);
-      return redirect()->route('social',['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
+      $rout=route('social');
+      return redirect($rout)->with(['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
 
   }
 public function socialup(Request $request){

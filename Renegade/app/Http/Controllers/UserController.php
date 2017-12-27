@@ -148,8 +148,7 @@ class UserController extends Controller{
   public function handleGoogleCallback()
   {
     // $userg = Socialite::driver('google')->user();
-    $userg = Socialite::driver('google')->stateless()->user();
-      return $userg->email;
+      $userg = Socialite::driver('google')->stateless()->user();
       $user = new User;
       $user->first_name = $userg->user['name']['givenName'];
       $user->last_name = $userg->user['name']['familyName'];
@@ -157,7 +156,7 @@ class UserController extends Controller{
       $user->gender = $userg->user['gender'];
       $user->save();
       Auth::login($user);
-      return view('social',['userid'=>$user->id]);
+      return view('social');
 
   }
 public function socialup(Request $request){

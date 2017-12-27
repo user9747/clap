@@ -90,8 +90,8 @@ Sign Up
                   <div class='form-group'>
 
                   <select name="gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                   </select>
                   </div>
 

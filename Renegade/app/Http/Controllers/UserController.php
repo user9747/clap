@@ -189,7 +189,13 @@ public function socialup(Request $request){
 
 }
 
+public function social(Request $request){
+    
+  return view('social'); 
 
+
+
+}
 
 
 

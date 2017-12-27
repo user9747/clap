@@ -84,7 +84,7 @@
 
     ]);
  Route::get('/social',[
-     'uses'=>'PostController@social',
+     'uses'=>'UserController@social',
      'as'=>'social'
  ]);  
  Route::get('/socialup',[

@@ -36,34 +36,38 @@ Dashboard
 </nav>
 </header>
 <div class='row newpost'>
-    <div class='col-md-6 col-md-offset-5'>
+    <div class='col-md-6 col-xs-12'></div>
+    <div class='col-md-6 col-xs-12'>
         <section class='newpost'>
-        <header><h3>What do you have to say?</h3></header>
+             <header><h3>What do you have to say?</h3></header>
 
-            <div class='form-group'>
-                <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
-            </div>
+                 <div class='form-group'>
+                      <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='Your Post'></textarea>
+                 </div>
                 <button type='submit' class='bton' id='postit'>Post</button>
 
 
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
+            
+
+         </section><hr>
+     </div></div>
 
 
-        </section>
+         <div name='posts' class='row post'>
+            <div class='col-md-6 col-xs-12'></div>
+            <div class='col-md-6 col-xs-12'>
+                <header><h3>What do others have to say?</h3></header>
 
-        <div name='posts' class='row post'>
-            <div class='col-md-6'>
-            <header><h3>What do others have to say?</h3></header>
-
-              @foreach($posts as $post)
-                @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
-                <article data-postid='{{$post->id}}'>
+                            @foreach($posts as $post)
+                                                         @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
+                         <article data-postid='{{$post->id}}'>
                         <p>{{$post->body}}</p>
-                <div class='info'>
-                    Posted by user {{$post->user['username']}} on {{$post->created_at}}
-                </div>
-                <div class='interaction'>
-                <p>
+                        <div class='info'>
+                             Posted by user {{$post->user['username']}} on {{$post->created_at}}
+                     </div>
+                     <div class='interaction'>
+                    <p>
 
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>|
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
@@ -71,9 +75,9 @@ Dashboard
                     |<a href='#' class='editpost'>Edit</a>|
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                   @endif
-                </p>
-                </div>
-              </article>
+                     </p>
+                    </div>
+                         </article>
 
             @endif
             @if(Auth::user()->channel == "channel1")
@@ -98,7 +102,7 @@ Dashboard
                 |<a href='#' class='editpost'>Edit</a>|
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                 @endif
-            </p>
+            </p><hr>
             </div>
           </article>
               @endif
@@ -122,8 +126,8 @@ Dashboard
                 </textarea>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id='modal-save'>Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="bton" id='modal-save'>Save changes</button>
+                <button type="button" class="bton1" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>

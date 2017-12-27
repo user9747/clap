@@ -1,5 +1,5 @@
 .newpost{
-    border-bottom: 1px solid grey;  
+   
     padding:16px 0;
 }
 
@@ -40,11 +40,33 @@ body{
      padding-left: 20px;
     padding-right: 20px;
 }
+.bton1{
+   
+    background-color: white;
+    border-width: 0px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    padding:10px;
+    color:black;
+    border-radius: 3px;
+     padding-left: 20px;
+    padding-right: 20px;
+}
 .bton:focus{
   
   box-shadow: 0 0 10px black;
    background-color: white;
    color:black;
+    outline: none !important;
+    border:none;
+
+
+}
+.bton1:focus{
+  
+  box-shadow: 0 0 10px black;
+   background-color: black;
+   color:white;
     outline: none !important;
     border:none;
 
@@ -81,6 +103,18 @@ h3{
     
    border-radius: 0px;
     box-shadow: 0 0 10px black;
+}
+.row{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+@media (max-width: 480px) {
+.post{
+    text-align: center;
+}
+.newpost{
+    text-align: center;
+}
 }
 
 

@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'helveticaneuecondensed';
+	src: url('../fonts/helvetica-neue-condensed.otf');
+	/*src: local('33535gillsansmt'), url('../fonts/33535gillsansmt.woff') format('woff'), url('../fonts/33535gillsansmt.ttf') format('truetype');*/
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_1416">Text with this font applied</p> */
+.fontsforweb_fontid_1416 {
+	font-family: 'helveticaneuecondensed' !important;
+}
+@font-face {
+	font-family: 'helveticaneuecondensedbold';
+	src: url('../fonts/HelveticaNeue-condensedBold.otf');
+	/*src: local('33535gillsansmt'), url('../fonts/33535gillsansmt.woff') format('woff'), url('../fonts/33535gillsansmt.ttf') format('truetype');*/
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_1416">Text with this font applied</p> */
+.fontsforweb_fontid_1416 {
+	font-family: 'helveticaneuecondensedbold' !important;
+}
+/* Font downloaded from FontsForWeb.com */

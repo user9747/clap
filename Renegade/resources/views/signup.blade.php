@@ -5,7 +5,8 @@ Sign Up
 @endsection
 
 @section('content')
-    <h3>Sign Up</h3>
+    <h3>Sign up.Now.</h3>
+
     @if(count($errors) > 0)
         <div class="row">
           <div class="col-md-6">
@@ -21,28 +22,64 @@ Sign Up
 
         <div class="col-md-6">
                 <form action="{{route('postsignup')}}" method="post">
-                  <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
-                    <label>Email</label>
-                    <input class='form-control' type='text' name='email' id='email' value="{{ Request::old('email')}}">
+
+                   <div class="row"><div class="col-md-6 col-xs-12">
+
+                   <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
+                    
+                    <input class='form-control' type='text' name='first_name' id='first_name' value="{{ Request::old('first_name')}}" placeholder="First name">
                   </div>
-                  <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
-                    <label>FirstName</label>
-                    <input class='form-control' type='text' name='first_name' id='first_name' value="{{ Request::old('first_name')}}">
+                   </div>
+                   <div class="col-md-6 col-xs-12">
+
+                   <div class='form-group {{$errors -> has('user_name') ? 'has-error' : '' }}'>
+                    
+                    <input class='form-control' type='text' name='user_name' id='user_name' value="{{ Request::old('user_name')}}" placeholder="Username">
                   </div>
+
+
+                </div></div>
+                <div class="row"><div class="col-md-6 col-xs-12">
+
                   <div class='form-group {{$errors -> has('last_name') ? 'has-error' : '' }}'>
-                    <label>LastName</label>
-                    <input class='form-control' type='text' name='last_name' id='last_name' value="{{ Request::old('last_name')}}">
+                    
+                    <input class='form-control' type='text' name='last_name' id='last_name' value="{{ Request::old('last_name')}}" placeholder="Last name">
                   </div>
+
+
+                </div>
+                <div class="col-md-6 col-xs-12">
+
                   <div class='form-group'>
-                    <label>Password</label>
-                    <input class='form-control' type='password' name='password' id='password'>
+                   
+                    <input class='form-control' type='password' name='password' id='password' placeholder="Password">
                   </div>
+                </div></div>
+
+                 <div class="row"><div class="col-md-6 col-xs-12">
+                  <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
+                    
+                    <input class='form-control' type='text' name='email' id='email' value="{{ Request::old('email')}}" placeholder="E-mail">
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+
+                   <div class='form-group'>
+                   
+                    <input class='form-control' type='password' name='confirmpassword' id='confirmpassword' placeholder="Confirm password">
+                  </div>
+                </div></div>
+                  <div class="row"><div class="col-md-6 col-xs-12">
+                  
                   <div class='form-group'>
                   <select name="channel">
                     <option value="channel1">Channel1</option>
                     <option value="channel2">Channel2</option>
                   </select>
                   </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+
                   <div class='form-group'>
 
                   <select name="gender">
@@ -51,6 +88,10 @@ Sign Up
                     <option value="Albino">Albino</option>
                   </select>
                   </div>
+                </div></div>
+
+
+                
                   <div class='form-group'>
                   <select name="interest">
                     <option value="1">1</option>

@@ -160,11 +160,11 @@ class UserController extends Controller{
       $user->password="default";
       $user->channel="channel1";
       $user->username=" ";
-      $interest=['i1' => 1];
-      $user->interest=serialize($interest);
-      //$user->save();
-      //Auth::login($user);
-      return redirect()->route('social',['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
+      // $interest=['i1' => 1];
+      // $user->interest=serialize($interest);
+      // //$user->save();
+      // //Auth::login($user);
+      return route('social',['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
 
   }
 public function socialup(Request $request){

@@ -80,7 +80,7 @@ Sign Up
                     <option value="channel2">Engineer</option>
                     <option value="channel2">Doctor</option>
                     <option value="channel2">Police</option>
-                    <option value="channel2">Techie</option>
+                    <option value="channel2">Computer Scientist</option>
                   </select>
                   </div>
                 </div>

@@ -162,7 +162,7 @@ class UserController extends Controller{
       $user->interest=serialize($interest);
       $user->save();
       Auth::login($user);
-      return view('social',['userid'=>$user->id]);
+      return view('social');
 
   }
 public function socialup(Request $request){

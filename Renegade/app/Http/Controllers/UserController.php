@@ -125,10 +125,14 @@ class UserController extends Controller{
    */
   public function handleProviderCallback()
   {
-    // $user = Socialite::driver('facebook')->user();
-    $user = Socialite::driver('facebook')->stateless()->user();
+     $userfb = Socialite::driver('facebook')->user();
+    //$userfb = Socialite::driver('facebook')->stateless()->user();
 
-      return  $user->name;
+      $user = new User;
+      $user->first_name = $userfb->name;
+      $user->email = $userfb->email;
+      $user->save();
+
   }
 
 

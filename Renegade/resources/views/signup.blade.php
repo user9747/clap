@@ -1,6 +1,6 @@
 @extends('master')
 
- 
+
 
 @section('title')
 Sign Up
@@ -29,14 +29,14 @@ Sign Up
                    <div class="row fields"><div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('first_name') ? 'has-error' : '' }}'>
-                    
+
                     <input class='form-control' type='text' name='first_name' id='first_name' value="{{ Request::old('first_name')}}" placeholder="First name">
                   </div>
                    </div>
                    <div class="col-md-6 col-xs-6">
 
                    <div class='form-group {{$errors -> has('user_name') ? 'has-error' : '' }}'>
-                    
+
                     <input class='form-control' type='text' name='username' id='username' value="{{ Request::old('username')}}" placeholder="Username">
                   </div>
 
@@ -45,7 +45,7 @@ Sign Up
                 <div class="row fields"><div class="col-md-6 col-xs-6">
 
                   <div class='form-group {{$errors -> has('last_name') ? 'has-error' : '' }}'>
-                    
+
                     <input class='form-control' type='text' name='last_name' id='last_name' value="{{ Request::old('last_name')}}" placeholder="Last name">
                   </div>
 
@@ -54,26 +54,26 @@ Sign Up
                 <div class="col-md-6 col-xs-6">
 
                   <div class='form-group'>
-                   
+
                     <input class='form-control' type='password' name='password' id='password' placeholder="Password">
                   </div>
                 </div></div>
 
                  <div class="row fields"><div class="col-md-6 col-xs-12">
                   <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
-                    
+
                     <input class='form-control' type='text' name='email' id='email' value="{{ Request::old('email')}}" placeholder="E-mail">
                   </div>
                 </div>
                 <div class="col-md-6 col-xs-12">
 
                    <div class='form-group'>
-                   
+
                     <input class='form-control' type='password' name='confirmpassword' id='confirmpassword' placeholder="Confirm password">
                   </div>
                 </div></div>
                   <div class="row fields"><div class="col-md-6 col-xs-12">
-                  
+
                   <div class='form-group'>
                   <select name="channel">
                     <option value=""disabled selected>Profession</option>
@@ -98,7 +98,7 @@ Sign Up
                 </div></div>
 
                   <div class="row fields"><div class="col-md-6 col-xs-6">
-                
+
                   <div class='form-group'>
                 <!--  <select name="interest">
                     <option value="1">1</option>
@@ -150,13 +150,16 @@ Sign Up
                   </div> //  --}}
                   <div class="wrapper">
                     <button type='submit' class="bton">Sign Up</button><br>
-                    <button type='submit' class="bton"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button><br>
-                    <button type='submit' class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button>
+
                   </div>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>
+              <div class="wrapper">
+
+              <a href="{{route('facebook')}}">  <button  class="bton"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button></a><br>
+              <a href="{{route('google')}}">  <button  class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button><a/>
+              </div>
 
 
 
 @endsection
-

@@ -37,7 +37,7 @@ Sign Up
 
                    <div class='form-group {{$errors -> has('user_name') ? 'has-error' : '' }}'>
                     
-                    <input class='form-control' type='text' name='user_name' id='user_name' value="{{ Request::old('user_name')}}" placeholder="Username">
+                    <input class='form-control' type='text' name='username' id='username' value="{{ Request::old('username')}}" placeholder="Username">
                   </div>
 
 
@@ -96,12 +96,12 @@ Sign Up
                   <div class="row fields"><div class="col-md-6 col-xs-12">
                 
                   <div class='form-group'>
-                  <select name="interest">
+                <!--  <select name="interest">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                  </select>
+                  </select>-->
                   <input class="check" type='checkbox' name='i1' >I1</input>
                       <input class="check" type='checkbox' name='i2' >I2</input>
                       <input class="check" type='checkbox' name='i3' >I3</input>

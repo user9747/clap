@@ -60,7 +60,7 @@ Dashboard
                 <article data-postid='{{$post->id}}'>
                         <p>{{$post->body}}</p>
                 <div class='info'>
-                    Posted by user {{$post->user['first_name']}} on {{$post->created_at}}
+                    Posted by user {{$post->user['username']}} on {{$post->created_at}}
                 </div>
                 <div class='interaction'>
                 <p>
@@ -87,7 +87,7 @@ Dashboard
 
 
             <div class='info'>
-                Posted by user {{$post->user['first_name']}} on {{$post->created_at}}
+                Posted by user {{$post->user['username']}} on {{$post->created_at}}
             </div>
             <div class='interaction'>
             <p>

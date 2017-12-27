@@ -23,25 +23,23 @@ class UserController extends Controller{
           'email' => 'required|email|unique:users',
           'first_name' => 'required|max:120',
           'last_name' => 'required|max:120',
+          'username'=>'required|unique:users',
           'password' => 'required|min:4',
+          'confirmpassword'=>'required_with:password|same:password|min:4',
           'gender' => 'required',
           'channel' => 'required',
           ]);
-        $email=$request['email'];
         $password=bcrypt($request['password']);
-        $first_name=$request['first_name'];
-        $last_name=$request['last_name'];
-        $gender=$request['gender'];
-        $channel=$request['channel'];
         $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
 
         $user=new User();
-        $user->email=$email;
+        $user->email=$request['email'];
         $user->password=$password;
-        $user->first_name=$first_name;
-        $user->last_name=$last_name;
-        $user->gender=$gender;
-        $user->channel=$channel;
+        $user->first_name=$request['first_name'];
+        $user->last_name=$request['last_name'];
+        $user->gender=$request['gender'];
+        $user->channel=$request['channel'];
+        $user->username=$request['username'];
         $user->interest=serialize($interest);
 
         $user->save();

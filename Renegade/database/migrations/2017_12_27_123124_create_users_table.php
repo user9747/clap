@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('channel');
             $table->string('gender');
+            $table->string('username');
             $table->string('interest');
-            $table->rememberToken();
         });
     }
 

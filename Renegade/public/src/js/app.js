@@ -67,11 +67,13 @@ $('#tagsave').on('click',function(event){
     .done(function(msg){
         //console.log(msg['body']);
         $('#tagmodal').modal('hide');
-        if(msg['message']=='Post successfully created')
+        if(msg['message']=='Post successfully created'){
+        location.reload(true);
         document.getElementById('success').innerHTML=msg['message'];
+        }
         else
         document.getElementById('error').innerHTML=msg['message'];
-        location.reload(true);
+        
         // $.ajax({
         //     method:'GET',
         //     url:dashboard

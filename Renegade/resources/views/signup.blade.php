@@ -145,9 +145,9 @@ Sign Up
                    </div>
                   </div> //  --}}
                   <div class="wrapper">
-                    <button type='submit' class='btn btn-primary'>Sign Up</button><br>
-                    <button type='submit' class='btn btn-primary'><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button><br>
-                    <button type='submit' class='btn btn-primary'><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button>
+                    <button type='submit' class="bton">Sign Up</button><br>
+                    <button type='submit' class="bton"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button><br>
+                    <button type='submit' class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button>
                   </div>
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>

@@ -45,6 +45,6 @@ return [
     'facebook' => [
         'client_id' => '1657608050971549',
         'client_secret' => 'bf98d1669a8554325b4bcd141ab0b0ff',
-        'redirect' => 'http://127.0.0.1:8000/login/facebook/callback',]
+        'redirect' => 'http://renegadecet.ml/login/facebook/callback',]
 
 ];

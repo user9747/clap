@@ -39,7 +39,12 @@ return [
     'google' => [
     'client_id' => '493534719273-7edqq5va6uegev6i687ver91uhkh702q.apps.googleusercontent.com',         // Your GitHub Client ID
     'client_secret' => 'XbHpFjuOGh1gBLg2VkhMv62R', // Your GitHub Client Secret
-    'redirect' => 'http://renegadecet.ml/login/google/callback',
+    'redirect' => 'http://127.0.0.1:8000/login/google/callback',
     ],
+
+    'facebook' => [
+        'client_id' => '1657608050971549',
+        'client_secret' => 'bf98d1669a8554325b4bcd141ab0b0ff',
+        'redirect' => 'http://127.0.0.1:8000/login/facebook/callback',]
 
 ];

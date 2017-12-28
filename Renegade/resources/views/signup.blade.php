@@ -22,7 +22,7 @@ Sign Up
           </div>
         </div>
     @endif
-
+        
 
                 <form action="{{route('postsignup')}}" method="post">
 
@@ -150,11 +150,31 @@ Sign Up
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
               </form>
               <div class="wrapper">
-
-              
-              <a href="{{route('google')}}">  <button  class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button><a/>
+                <a href="{{route('facebook')}}">  <button  class="bton"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp&nbspSign up with Facebook</button><a/>
               </div>
-
+              <div class="wrapper">
+                <a href="{{route('google')}}">  <button  class="bton"><i class="fa fa-google" aria-hidden="true"></i>&nbsp&nbspSign up with Google</button><a/>
+              </div>
+              <body>
+                <script>
+                  window.fbAsyncInit = function() {
+                    FB.init({
+                      appId      : '1657608050971549',
+                      xfbml      : true,
+                      version    : 'v2.11'
+                    });
+                    FB.AppEvents.logPageView();
+                  };
+                
+                  (function(d, s, id){
+                     var js, fjs = d.getElementsByTagName(s)[0];
+                     if (d.getElementById(id)) {return;}
+                     js = d.createElement(s); js.id = id;
+                     js.src = "https://connect.facebook.net/en_US/sdk.js";
+                     fjs.parentNode.insertBefore(js, fjs);
+                   }(document, 'script', 'facebook-jssdk'));
+                </script>
+              </body>
 
 
 @endsection

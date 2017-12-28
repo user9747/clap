@@ -130,8 +130,14 @@ class UserController extends Controller{
 
       $user = new User;
       $user->first_name = $userfb->name;
+      $user->last_name=' ';
       $user->email = $userfb->email;
-      $user->save();
+      $user->gender='male';
+      $user->password="default";
+      $user->channel="channel1";
+      $user->username=" ";
+      $rout=route('social');
+      return redirect()->route('social')->with(['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
 
   }
 
@@ -148,22 +154,15 @@ class UserController extends Controller{
   public function handleGoogleCallback()
   {
     // $userg = Socialite::driver('google')->user();
-    $userg = Socialite::driver('google')->stateless()->user();
+      $userg = Socialite::driver('google')->stateless()->user();
       $user = new User;
       $user->first_name = $userg->user['name']['givenName'];
       $user->last_name = $userg->user['name']['familyName'];
       $user->email = $userg->email;
-      // if($userg->user['gender'])
-      // $user->gender = $userg->user['gender'];
-      // else
       $user->gender='male';
       $user->password="default";
       $user->channel="channel1";
       $user->username=" ";
-      // $interest=['i1' => 1];
-      // $user->interest=serialize($interest);
-      // //$user->save();
-      // //Auth::login($user);
       $rout=route('social');
       return redirect($rout)->with(['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
 

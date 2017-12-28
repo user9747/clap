@@ -35,16 +35,17 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    
+
     'google' => [
-    'client_id' => '493534719273-7edqq5va6uegev6i687ver91uhkh702q.apps.googleusercontent.com',         // Your GitHub Client ID
-    'client_secret' => 'XbHpFjuOGh1gBLg2VkhMv62R', // Your GitHub Client Secret
-    'redirect' => 'http://127.0.0.1:8000/login/google/callback',
+    'client_id' => env('GOOGLE_ID'),         // Your GitHub Client ID
+    'client_secret' => env('GOOGLE_SEC'), // Your GitHub Client Secret
+    'redirect' => env('GOOGLE_RED'),
     ],
 
     'facebook' => [
-        'client_id' => '1657608050971549',
-        'client_secret' => 'bf98d1669a8554325b4bcd141ab0b0ff',
-        'redirect' => 'http://renegadecet.ml/login/facebook/callback',]
+    'client_id' => env('FAC_APP_ID'),         // Your GitHub Client ID
+    'client_secret' => env('FAC_APP_SECRET'), // Your GitHub Client Secret
+    'redirect' => env('FAC_APP_RED'),
+    ],
 
 ];

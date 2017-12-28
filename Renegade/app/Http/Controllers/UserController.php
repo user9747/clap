@@ -206,6 +206,25 @@ public function social(Request $request){
 
 }
 
+public function googleSignIn(){
+
+  return Socialite::driver('google')->redirect();
+
+}
+
+public function googleSignInCallback()
+{
+  // $userg = Socialite::driver('google')->user();
+    $userg = Socialite::driver('google')->stateless()->user();
+    if (Auth::attempt(['email'=> $userg->email])){
+
+      return redirect()->route('dashboard');
+
+  }
+     return redirect()->back();
+
+}
+
 
 
 

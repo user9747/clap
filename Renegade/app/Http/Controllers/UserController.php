@@ -43,10 +43,10 @@ class UserController extends Controller{
         $user->channel=$request['channel'];
         $user->username=$request['username'];
         $user->interest=serialize($interest);
-        if($user->gender='male')
+        if($user->gender=='male')
           $user->imageurl='/src/img/dummymale.jpg';
         else
-          $user->imageurl='/src/img/dummyfemale.jpg';  
+          $user->imageurl='/src/img/dummyfemale.jpeg';  
         $user->save();
         Auth::login($user);
         return redirect()->route('dashboard');

@@ -97,7 +97,7 @@ Sign Up
 
                 </div></div>
                   
-                  <div class="row fields"><div class="col-md-6 col-xs-6">
+                  <div class="row fields"><div class="col-md-5 col-xs-5">
                       <label>Interest</label>
                   <div class='form-group'>
                       

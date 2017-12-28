@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->string('username');
             $table->string('interest');
+            $table->string('imageurl');
             $table->rememberToken();
         });
     }

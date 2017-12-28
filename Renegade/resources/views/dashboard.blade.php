@@ -39,13 +39,18 @@ Dashboard
 </nav>
 </header>
 <div class='row newpost'>
-    <div class='col-md-3 container-fluid eq_height '><div class="left"><h5>Your Feed</h5></div></div>
+    <div class='col-md-3 container-fluid eq_height '>
+      <div class="left">
+        <h5>Your Feed</h5>
+        <img src='{{Auth::user()->imageurl}}' class='img-responsive' style='height:175px;' alt='Profile picture'>
+      </div>
+    </div>
     <div class='col-md-9 container-fluid eq_height'>
         <section class='newpost'>
              
 
                  <div class='form-group'>
-                      <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='What do you have to say?'></textarea>
+                      <textarea name='body' id='newpost' class='form-control'  rows='7' placeholder='What do you have to say?'></textarea>
                  </div>
                 <button type='submit' class='bton' id='postit'>Post</button>
 

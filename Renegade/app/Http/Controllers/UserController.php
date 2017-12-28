@@ -43,7 +43,10 @@ class UserController extends Controller{
         $user->channel=$request['channel'];
         $user->username=$request['username'];
         $user->interest=serialize($interest);
-
+        if($user->gender='male')
+          $user->imageurl='/src/img/dummymale.jpg';
+        else
+          $user->imageurl='/src/img/dummyfemale.jpg';  
         $user->save();
         Auth::login($user);
         return redirect()->route('dashboard');
@@ -97,11 +100,15 @@ class UserController extends Controller{
     $user->first_name = $request['first_name'];
     $user->last_name = $request['last_name'];
     $file = $request->file('image');
-    $filename = $request['first_name'] . '-' .$user->id . '.jpg';
+    $filename =$request['first_name'] . '-' .$user->id . '.jpg';
+    if($file){
+      $user->imageurl= '/storage/'.$filename;
+    }
+
     $user->save();
     if($file)
     {
-      Storage::disk('local')->put($filename,File::get($file));
+      Storage::disk('profile')->put($filename,File::get($file));
     }
     return redirect()->route('account');
   }
@@ -109,7 +116,7 @@ class UserController extends Controller{
   public function getUserImage($filename)
   {
 
-    $file = Storage::disk('local')->get($filename);
+    $file = Storage::disk('public')->get($filename);
     return new Response($file,200);
   }
 
@@ -197,6 +204,10 @@ public function socialup(Request $request){
   $user->channel=$request['channel'];
   $user->username=$request['username'];
   $user->interest=serialize($interest);
+  if($user->gender='male')
+    $user->imageurl='/src/img/dummymale.jpg';
+  else
+    $user->imageurl='/src/img/dummyfemale.jpg';
   $user->save();
   Auth::login($user);
   return redirect()->route('dashboard');

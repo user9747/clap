@@ -30,9 +30,18 @@
         'uses' => 'UserController@Signin',
         'as' =>'postsignin'
     ]);
+    Route::get('/privacypolicy',[
+        'uses'=>'UserController@privacy',
+        'as'=>'privacypolicy'
 
+    ]);
+    Route::get('/termsofservice',[
+        'uses'=>'UserController@terms',
+        'as'=>'termsofservice'
+    ]);
+    
     Route::get('login/facebook',['uses' => 'UserController@redirectToFacebook','as' => 'facebook']);
-    Route::get('login/facebook/callback', 'UserController@handleFacebookCallback');
+    Route::get('login/facebook/callback',['uses'=> 'UserController@handleFacebookCallback']);
 
     Route::get('login/google',['uses' => 'UserController@redirectToGoogle','as' => 'google']);
     Route::get('login/google/callback', 'UserController@handleGoogleCallback');

@@ -125,21 +125,26 @@ class UserController extends Controller{
    */
   public function handleFacebookCallback()
   {
-     $userfb = Socialite::driver('facebook')->user();
-    //$userfb = Socialite::driver('facebook')->stateless()->user();
-
+      $userfb = Socialite::driver('facebook')->user();
+      // $userfb = Socialite::driver('facebook')->stateless()->user();
       $user = new User;
-      $user->first_name = $userfb->name;
-      $user->last_name=' ';
+      $user->name =explode(" ",$userfb->name);
+      // $user->last_name=$userfb->name['lastname'];
       $user->email = $userfb->email;
       $user->gender='male';
       $user->password="default";
       $user->channel="channel1";
       $user->username=" ";
       $rout=route('social');
-      return redirect()->route('social')->with(['first'=>$user->first_name,'last'=>$user->last_name,'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
+      return redirect($rout)->with(['first'=>$user->name[0],'last'=>$user->name[1],'email'=>$user->email,'gender'=>$user->gender,'username'=>$user->username]);
 
   }
+  public function terms(){
+    return view('terms');
+ }
+ public function privacy(){
+  return view('privacy');
+}
 
   public function redirectToGoogle()
   {

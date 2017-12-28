@@ -37,14 +37,14 @@ return [
 
 
     'google' => [
-    'client_id' => env('GOOGLE_ID'),         // Your GitHub Client ID
-    'client_secret' => env('GOOGLE_SEC'), // Your GitHub Client Secret
+    'client_id' => env('GOOGLE_ID'),         // Your Google Client ID
+    'client_secret' => env('GOOGLE_SEC'), // Your Google Client Secret
     'redirect' => env('GOOGLE_RED'),
     ],
 
     'facebook' => [
-    'client_id' => env('FAC_APP_ID'),         // Your GitHub Client ID
-    'client_secret' => env('FAC_APP_SECRET'), // Your GitHub Client Secret
+    'client_id' => env('FAC_APP_ID'),         // Your facebook Client ID
+    'client_secret' => env('FAC_APP_SECRET'), // Your facebook Client Secret
     'redirect' => env('FAC_APP_RED'),
     ],
 

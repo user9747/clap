@@ -15,5 +15,10 @@ class User extends Model implements Authenticatable
         return $this->hasMany('App\Like');
 
     }
+    public function messages(){
+        return $this->hasMany('App\Message');
+
+    }
+
 
 }

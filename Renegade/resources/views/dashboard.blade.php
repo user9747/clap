@@ -39,13 +39,18 @@ Dashboard
 </nav>
 </header>
 <div class='row newpost'>
-    <div class='col-md-3 container-fluid eq_height '><div class="left"><h5>Your Feed</h5></div></div>
+    <div class='col-md-3 container-fluid eq_height '>
+      <div class="left">
+        <h5>Your Feed</h5>
+        <img src='{{Auth::user()->imageurl}}' class='img-responsive' style='height:175px;' alt='Profile picture'>
+      </div>
+    </div>
     <div class='col-md-9 container-fluid eq_height'>
         <section class='newpost'>
              
 
                  <div class='form-group'>
-                      <textarea name='body' id='newpost' class='form-control'  rows='5' placeholder='What do you have to say?'></textarea>
+                      <textarea name='body' id='newpost' class='form-control'  rows='7' placeholder='What do you have to say?'></textarea>
                  </div>
                 <button type='submit' class='bton' id='postit'>Post</button>
 
@@ -62,11 +67,10 @@ Dashboard
             <div class='col-md-9'>-->
                
 
-                            @foreach($posts as $post)
-                                                         @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
-                         
-                        
-                         <article data-postid='{{$post->id}}'>
+@foreach($posts as $post)
+    @if(!(Auth::user() == $post->user))
+      @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
+                 <article data-postid='{{$post->id}}'>
                              @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
                              <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="User" class="img-responsive" style="height:40px;">
                              @endif
@@ -80,46 +84,57 @@ Dashboard
 
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
-                    @if(Auth::user() == $post->user)
+                    {{--  @if(Auth::user() == $post->user)
                     &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-                  @endif
+                    @endif  --}}
                      </p>
                     </div>
                          </article>
 
             @endif
             @if(Auth::user()->channel == "channel1")
-            @php
-             $tag=unserialize($post->tags);
-            @endphp
+              @php
+                $tag=unserialize($post->tags);
+              @endphp
               @if((($userinterest['i1']== 1)&&($tag['t1'] == "true"))||(($userinterest['i2']== 1)&&($tag['t2'] == "true"))||(($userinterest['i3']== 1)&&($tag['t3'] == "true"))
               ||(($userinterest['i4']== 1)&&($tag['t4'] == "true"))||(($userinterest['i5']== 1)&&($tag['t5'] == "true")))
                <article data-postid='{{$post->id}}'>
                  <div class='info'>
                  {{$post->user['username']}} <br></div><div class="details">{{$post->created_at}}
-            </div>
-
-                    <p class="postcont">{{$post->body }}</p>
-
-
-
-           
-            <div class='interaction'>
-            <p>
-
+                 </div>
+                <p class="postcont">{{$post->body }}</p>
+                  <div class='interaction'>
+                <p>
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
-                @if(Auth::user() == $post->user)
+                {{--  @if(Auth::user() == $post->user)
                 &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-                @endif
+                @endif  --}}
             </p>
             </div>
           </article>
               @endif
-          @endif
-                @endforeach
+            @endif
+        @else
+        <article data-postid='{{$post->id}}'>
+            <div class='info'>
+            {{$post->user['username']}} <br></div><div class="details">{{$post->created_at}}
+            </div>
+           <p class="postcont">{{$post->body }}</p>
+             <div class='interaction'>
+           <p>
+           <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
+           <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
+           &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
+           <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
+    
+       </p>
+       </div>
+     </article>
+@endif
+@endforeach
             </div>
         </div>
 

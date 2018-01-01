@@ -1,4 +1,15 @@
+.navbar-toggle {
 
+
+  background-color: black;
+  border-width: 0px;
+  border-radius: 0px;
+
+}
+.navbar-toggle span .icon-bar{
+  color:white;
+
+}
 .success{
     color:green;
     background-color: rgb(156, 204, 156);
